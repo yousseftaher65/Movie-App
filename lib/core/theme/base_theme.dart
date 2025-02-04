@@ -96,20 +96,6 @@ class BaseTheme {
         borderSide: BorderSide.none,
       ),
     ),
-    bottomAppBarTheme: const BottomAppBarTheme(
-      color: AppColors.secondaryColor,
-      elevation: 0,
-      surfaceTintColor: Colors.transparent,
-    ),
-    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      backgroundColor: AppColors.secondaryColor,
-      showSelectedLabels: false,
-      showUnselectedLabels: false,
-      elevation: 0,
-      selectedItemColor: AppColors.accentColor,
-      unselectedItemColor: AppColors.whiteColor,
-      type: BottomNavigationBarType.fixed,
-    ),
     bottomSheetTheme: const BottomSheetThemeData(
       backgroundColor: AppColors.primaryColor,
     ),
