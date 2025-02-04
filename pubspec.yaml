@@ -9,6 +9,22 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  hive :
+  hive_flutter :
+  supabase_flutter :
+  http :
+  bloc :
+  flutter_bloc :
+  google_sign_in :
+  easy_localization :
+  flutter_screenutil :
+  google_fonts :
+  fluttertoast :
+  loader_overlay :
+  animate_do :
+  animated_toggle_switch :
+  cached_network_image :
+  connectivity_plus :
 
 dev_dependencies:
   flutter_test:
@@ -17,3 +33,9 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+  - assets/
+  - assets/images/
+  - assets/logos/
+  - assets/translations/
+  - assets/icons/
