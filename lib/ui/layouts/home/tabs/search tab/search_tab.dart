@@ -6,27 +6,37 @@ class SearchTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.only(top: 16.0, left: 16, right: 16),
-          child: Column(
-            children: [
-              TextField(
-                decoration: InputDecoration(
-                  prefixIcon: const ImageIcon(
-                    AssetImage('assets/icons/search_icon.png'),
+    return GestureDetector(
+      onTap: () {
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+      child: Scaffold(
+        resizeToAvoidBottomInset: true,
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 16.0, left: 16, right: 16),
+            child: Column(
+              children: [
+                TextField(
+                  autocorrect: true,
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        color: Theme.of(context).hintColor,
+                      ),
+                  decoration: InputDecoration(
+                    prefixIcon: const ImageIcon(
+                      AssetImage('assets/icons/search_icon.png'),
+                    ),
+                    hintText: 'search'.tr(),
                   ),
-                  hintText: 'search'.tr(),
                 ),
-              ),
-             const Spacer(),
-              Image.asset(
-                'assets/images/empty.png',
-                fit: BoxFit.cover,
-              ),
-             const Spacer()
-            ],
+                const Spacer(),
+                Image.asset(
+                  'assets/images/empty.png',
+                  fit: BoxFit.cover,
+                ),
+                const Spacer()
+              ],
+            ),
           ),
         ),
       ),

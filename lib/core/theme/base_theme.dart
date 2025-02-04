@@ -67,6 +67,7 @@ class BaseTheme {
       titleMedium: supTitleTxt,
       bodyLarge: contentTxt,
       bodyMedium: supContentTxt,
+      bodySmall: categoryTxt,
     ),
     inputDecorationTheme: InputDecorationTheme(
       hintStyle: contentTxt.copyWith(
