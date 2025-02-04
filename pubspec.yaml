@@ -25,6 +25,7 @@ dependencies:
   animated_toggle_switch :
   cached_network_image :
   connectivity_plus :
+  carousel_slider:
 
 dev_dependencies:
   flutter_test:
