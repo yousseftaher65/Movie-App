@@ -67,9 +67,19 @@ class BaseTheme {
       titleMedium: supTitleTxt,
       bodyLarge: contentTxt,
       bodyMedium: supContentTxt,
+      bodySmall: categoryTxt,
     ),
     inputDecorationTheme: InputDecorationTheme(
-      hintStyle: contentTxt,
+      hintStyle: contentTxt.copyWith(
+        color: AppColors.whiteColor
+      ),
+      prefixIconColor: AppColors.whiteColor,
+      prefixStyle: contentTxt.copyWith(
+        color: AppColors.whiteColor
+      ),
+      fillColor: AppColors.secondaryColor,
+      filled: true,
+      suffixIconColor: AppColors.whiteColor,
       contentPadding: const EdgeInsets.all(16),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(16.r),
