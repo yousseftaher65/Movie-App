@@ -109,5 +109,14 @@ class BaseTheme {
     bottomSheetTheme: const BottomSheetThemeData(
       backgroundColor: AppColors.primaryColor,
     ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        padding: EdgeInsets.symmetric(vertical: 16.h),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16.r),
+              ),
+              backgroundColor: AppColors.accentColor
+      )
+    )
   );
 }

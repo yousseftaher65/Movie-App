@@ -41,7 +41,12 @@ class _ExploreTabState extends State<ExploreTab> {
               SizedBox(
                 height: 24.h,
               ),
-             const CategoryListWidget()
+             const CategoryListWidget(
+                crossAxisCount: 2,
+                mainAxisSpacing: 8,
+                crossAxisSpacing: 20,
+                aspectRatio: 0.83,
+             )
             ],
           ),
         ),

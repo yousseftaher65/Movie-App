@@ -48,7 +48,7 @@ class HomeGenresWidget extends StatelessWidget {
               aspectRatio: 16 / 9,
               animateToClosest: true,
               disableCenter: true,
-              viewportFraction: 0.39,
+              viewportFraction: 0.36,
               scrollDirection: Axis.horizontal),
           itemCount: 3,
           itemBuilder: (context, index, realIndex) {
