@@ -30,8 +30,6 @@ class CategoryListWidget extends StatelessWidget {
           crossAxisSpacing: crossAxisSpacing,
           crossAxisCount: crossAxisCount,
           childAspectRatio: aspectRatio,
-          // maxCrossAxisExtent: maxCrossAxisExtent, // Max width of each item
-          //childAspectRatio: aspectRatio, // Width/Height ratio
         ),
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movie_pojo/core/routes/page_route_name.dart';
 
 class ProfileTabBar extends StatelessWidget {
   const ProfileTabBar({super.key});
@@ -91,13 +92,14 @@ class ProfileTabBar extends StatelessWidget {
                     flex: 2,
                     child: ElevatedButton(
                       onPressed: () {
-                        
+                        Navigator.pushNamed(context, PageRouteName.editProfile);
                       },
                       child: Text(
                         'edit_profile'.tr(),
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                              color: Theme.of(context).primaryColor,
-                            ),
+                        style:
+                            Theme.of(context).textTheme.titleMedium?.copyWith(
+                                  color: Theme.of(context).primaryColor,
+                                ),
                       ),
                     ),
                   ),
@@ -107,20 +109,20 @@ class ProfileTabBar extends StatelessWidget {
                   Expanded(
                     flex: 1,
                     child: ElevatedButton(
-                      onPressed: () {
-
-                      },
+                      onPressed: () {},
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Theme.of(context).focusColor),
+                          backgroundColor: Theme.of(context).focusColor),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
                             'exit'.tr(),
-                            style:
-                                Theme.of(context).textTheme.titleMedium?.copyWith(
-                                      color: Theme.of(context).hintColor,
-                                    ),
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium
+                                ?.copyWith(
+                                  color: Theme.of(context).hintColor,
+                                ),
                           ),
                           SizedBox(
                             width: 8.w,
@@ -161,7 +163,7 @@ class ProfileTabBar extends StatelessWidget {
                       'assets/icons/menu_icon.png',
                     ),
                   ),
-                  child:  Text(
+                  child: Text(
                     'watch_list'.tr(),
                   ),
                 ),
@@ -171,7 +173,7 @@ class ProfileTabBar extends StatelessWidget {
                     color: Theme.of(context).cardColor,
                     const AssetImage('assets/icons/folder_icon.png'),
                   ),
-                  child:  Text(
+                  child: Text(
                     'history'.tr(),
                   ),
                 )
