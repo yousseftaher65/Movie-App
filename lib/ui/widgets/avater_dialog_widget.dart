@@ -36,7 +36,7 @@ class _AvaterDialogWidgetState extends State<AvaterDialogWidget> {
                   crossAxisCount: 3,
                   mainAxisSpacing: 19.h,
                   crossAxisSpacing: 18.w,
-                  childAspectRatio: 1.273),
+                  childAspectRatio: 1.024),
               itemCount: 9,
               itemBuilder: (context, index) {
                 return GestureDetector(
@@ -48,7 +48,7 @@ class _AvaterDialogWidgetState extends State<AvaterDialogWidget> {
                   },
                   child: Container(
                     padding:
-                        const EdgeInsets.symmetric(horizontal: 11, vertical: 9),
+                         EdgeInsets.symmetric(horizontal: 11.w, vertical: 9.h),
                     decoration: BoxDecoration(
                       color: currentIndex == index
                           ? Theme.of(context).cardColor.withOpacity(0.50)
