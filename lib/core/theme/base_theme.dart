@@ -51,7 +51,10 @@ class BaseTheme {
       centerTitle: true,
       surfaceTintColor: Colors.transparent,
       backgroundColor: AppColors.primaryColor,
-      titleTextStyle: titleTxt.copyWith(color: AppColors.accentColor),
+      titleTextStyle: contentTxt.copyWith(color: AppColors.accentColor),
+      iconTheme: const IconThemeData(
+        color: AppColors.accentColor
+      )
     ),
     textTheme: TextTheme(
       headlineLarge: onBoardingTitleTxt.copyWith(
