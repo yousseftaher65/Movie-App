@@ -20,77 +20,83 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'pick_avater'.tr(),
+    return GestureDetector(
+      onTap: () {
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        appBar: AppBar(
+          title: Text(
+            'pick_avater'.tr(),
+          ),
         ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Center(
-              child: GestureDetector(
-                onTap: () async {
-                  return await showDialog(
-                      barrierDismissible: true,
-                      context: context,
-                      builder: (context) {
-                        return AvaterDialogWidget(
-                            onAvatarSelected: _updateAvatarIndex);
-                      });
-                },
-                child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 36.h),
-                  child: Image.asset(
-                    'assets/images/avater_${currentIndex + 1}.png',
-                    fit: BoxFit.contain,
-                    height: 150.h,
-                    width: 150.w,
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Center(
+                child: GestureDetector(
+                  onTap: () async {
+                    return await showDialog(
+                        barrierDismissible: true,
+                        context: context,
+                        builder: (context) {
+                          return AvaterDialogWidget(
+                              onAvatarSelected: _updateAvatarIndex);
+                        });
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 36.h),
+                    child: Image.asset(
+                      'assets/images/avater_${currentIndex + 1}.png',
+                      fit: BoxFit.contain,
+                      height: 150.h,
+                      width: 150.w,
+                    ),
                   ),
                 ),
               ),
-            ),
-            TextField(
-              autocorrect: true,
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: Theme.of(context).hintColor,
-                  ),
-              decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.person),
-                hintText: 'name'.tr(),
-              ),
-            ),
-            const Spacer(),
-            ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: Theme.of(context).focusColor),
-              child: Text(
-                'delete_account'.tr(),
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+              TextField(
+                autocorrect: true,
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       color: Theme.of(context).hintColor,
                     ),
+                decoration: InputDecoration(
+                  prefixIcon: const Icon(Icons.person),
+                  hintText: 'name'.tr(),
+                ),
               ),
-            ),
-            SizedBox(
-              height: 19.h,
-            ),
-            ElevatedButton(
-              onPressed: () {},
-              child: Text(
-                'update_data'.tr(),
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      color: Theme.of(context).primaryColor,
-                    ),
+              const Spacer(),
+              ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Theme.of(context).focusColor),
+                child: Text(
+                  'delete_account'.tr(),
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        color: Theme.of(context).hintColor,
+                      ),
+                ),
               ),
-            ),
-            SizedBox(
-              height: 33.h,
-            ),
-          ],
+              SizedBox(
+                height: 19.h,
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                child: Text(
+                  'update_data'.tr(),
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        color: Theme.of(context).primaryColor,
+                      ),
+                ),
+              ),
+              SizedBox(
+                height: 33.h,
+              ),
+            ],
+          ),
         ),
       ),
     );

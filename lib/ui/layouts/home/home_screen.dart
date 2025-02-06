@@ -25,6 +25,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
    return Scaffold(
+    resizeToAvoidBottomInset: false,
+    extendBody:true,
       body: Stack(
         children: [
           // Main Content
@@ -33,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Positioned(
             left: 8,
             right: 8,
-            bottom: 16,
+            bottom: 8,
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16.r),

@@ -10,11 +10,14 @@ class AvailableNowWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
                 children: [
-                  Image.asset(
-                    'assets/images/movie_poster.jpg',
-                    fit: BoxFit.cover,
-                    height: 624.h,
-                    width: double.infinity,
+                  AspectRatio(
+                    aspectRatio: .690,
+                    child: Image.asset(
+                      'assets/images/movie_poster.jpg',
+                      fit: BoxFit.cover,
+                      //height: 621.h,
+                      width: double.infinity,
+                    ),
                   ),
                   Container(
                     decoration: BoxDecoration(
