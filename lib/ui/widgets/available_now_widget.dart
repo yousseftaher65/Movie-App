@@ -35,7 +35,7 @@ class AvailableNowWidget extends StatelessWidget {
                           'assets/images/available_now.png',
                           fit: BoxFit.cover,
                         ),
-                        SizedBox(height: 24.h),
+                        SizedBox(height: 21.h),
                         CarouselSlider.builder(
                           options: CarouselOptions(
                             initialPage: 1,
@@ -44,9 +44,9 @@ class AvailableNowWidget extends StatelessWidget {
                             disableCenter: false,
                             enlargeCenterPage: true,
                             //enableInfiniteScroll: false,
-                            viewportFraction: 0.55,
+                            viewportFraction: 0.58,
                             enlargeStrategy: CenterPageEnlargeStrategy.zoom,
-                            enlargeFactor: 0.55,
+                            enlargeFactor: 0.46,
                             height: 351.h,
                             scrollDirection: Axis.horizontal
                           ),

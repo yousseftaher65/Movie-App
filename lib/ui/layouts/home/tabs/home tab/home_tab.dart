@@ -15,7 +15,7 @@ class HomeTab extends StatelessWidget {
           child: Column(
             children: [
              const AvailableNowWidget(),
-              SizedBox(height: 24.h),
+              SizedBox(height: 20.h),
              const HomeGenresWidget()
             ],
           ),

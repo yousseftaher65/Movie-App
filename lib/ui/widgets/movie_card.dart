@@ -9,8 +9,8 @@ class MovieCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: cardHeight.h,
-      width: cardWidth.w,
+       height: cardHeight.h,
+      width: cardWidth.w, 
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24.r),
       ),
@@ -19,7 +19,11 @@ class MovieCard extends StatelessWidget {
         children: [
           ClipRRect(
               borderRadius: BorderRadius.circular(24.r),
-              child: Image.asset('assets/images/movie_poster.jpg')),
+              child: Image.asset('assets/images/movie_poster.jpg',
+              fit: BoxFit.cover,
+              height: cardHeight.h,
+              width: cardWidth.w,
+            ),),
           Container(
             margin: const EdgeInsets.only(top: 12, right: 8, left: 8),
             alignment: Alignment.center,

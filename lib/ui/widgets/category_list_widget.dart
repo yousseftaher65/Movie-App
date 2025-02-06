@@ -2,7 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:movie_pojo/ui/widgets/movie_card.dart';
 
 class CategoryListWidget extends StatelessWidget {
-  const CategoryListWidget({super.key});
+  final int crossAxisCount;
+  final double mainAxisSpacing;
+  final double crossAxisSpacing;
+  final double aspectRatio;
+  const CategoryListWidget(
+      {super.key,
+      required this.crossAxisCount,
+      required this.mainAxisSpacing,
+      required this.crossAxisSpacing,
+      required this.aspectRatio});
 
   @override
   Widget build(BuildContext context) {
@@ -11,13 +20,17 @@ class CategoryListWidget extends StatelessWidget {
         padding: EdgeInsets.zero,
         itemCount: 20,
         itemBuilder: (contxt, index) {
-          return const MovieCard();
+          return const MovieCard(
+            cardHeight: double.infinity,
+            cardWidth:  double.infinity,
+          );
         },
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            mainAxisSpacing: 8,
-            crossAxisSpacing: 20,
-            childAspectRatio: 19.5 / 31),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          mainAxisSpacing: mainAxisSpacing,
+          crossAxisSpacing: crossAxisSpacing,
+          crossAxisCount: crossAxisCount,
+          childAspectRatio: aspectRatio,
+        ),
       ),
     );
   }

@@ -51,7 +51,10 @@ class BaseTheme {
       centerTitle: true,
       surfaceTintColor: Colors.transparent,
       backgroundColor: AppColors.primaryColor,
-      titleTextStyle: titleTxt.copyWith(color: AppColors.accentColor),
+      titleTextStyle: contentTxt.copyWith(color: AppColors.accentColor),
+      iconTheme: const IconThemeData(
+        color: AppColors.accentColor
+      )
     ),
     textTheme: TextTheme(
       headlineLarge: onBoardingTitleTxt.copyWith(
@@ -109,5 +112,14 @@ class BaseTheme {
     bottomSheetTheme: const BottomSheetThemeData(
       backgroundColor: AppColors.primaryColor,
     ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        padding: EdgeInsets.symmetric(vertical: 16.h),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16.r),
+              ),
+              backgroundColor: AppColors.accentColor
+      )
+    )
   );
 }
