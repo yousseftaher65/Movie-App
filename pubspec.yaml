@@ -26,6 +26,7 @@ dependencies:
   cached_network_image :
   connectivity_plus :
   carousel_slider:
+  introduction_screen: ^3.1.14
 
 dev_dependencies:
   flutter_test:

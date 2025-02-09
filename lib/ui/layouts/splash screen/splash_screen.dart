@@ -14,7 +14,7 @@ class _SplashScreenState extends State<SplashScreen> {
   initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 3), () {
-      if (mounted) Navigator.pushNamedAndRemoveUntil(context, PageRouteName.home , (route) => false);
+      if (mounted) Navigator.pushNamedAndRemoveUntil(context, PageRouteName.onBoarding1 , (route) => false);
     });
   }
   @override
