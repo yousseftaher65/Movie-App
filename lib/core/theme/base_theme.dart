@@ -61,7 +61,7 @@ class BaseTheme {
         color: AppColors.whiteColor
       ),
       headlineMedium: onBoardingContentTxt.copyWith(
-        color: AppColors.whiteColor,
+        color: AppColors.secondaryColor,
       ),
       headlineSmall: onBoardingButtonTxt.copyWith(
         color: AppColors.primaryColor
