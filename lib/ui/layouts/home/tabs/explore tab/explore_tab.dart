@@ -46,6 +46,7 @@ class _ExploreTabState extends State<ExploreTab> {
                 mainAxisSpacing: 8,
                 crossAxisSpacing: 20,
                 aspectRatio: 0.74,
+                itemCount: 20,
              )
             ],
           ),
