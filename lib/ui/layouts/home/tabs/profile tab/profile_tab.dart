@@ -34,7 +34,7 @@ class ProfileTab extends StatelessWidget {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.only(right: 16.0, left: 16, top: 16),
+                padding: EdgeInsets.only(right: 16.0.w, left: 16.w, top: 16.h),
                 child: CustomScrollView(
                   physics: const NeverScrollableScrollPhysics(),
                   slivers: [
@@ -48,11 +48,12 @@ class ProfileTab extends StatelessWidget {
                         },
                         childCount: 20,
                       ),
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        mainAxisSpacing: 16,
-                          crossAxisSpacing: 16,
-                          childAspectRatio: 0.68 ,
-                          crossAxisCount: 3),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                              mainAxisSpacing: 16,
+                              crossAxisSpacing: 16,
+                              childAspectRatio: 0.68,
+                              crossAxisCount: 3),
                     ),
                   ],
                 ),

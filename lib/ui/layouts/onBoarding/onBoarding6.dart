@@ -52,7 +52,7 @@ class OnBoarding6 extends StatelessWidget {
                       child: ElevatedButton(
                         onPressed: () {
                           Navigator.pushNamedAndRemoveUntil(
-                              context, PageRouteName.home, (_) => false);
+                              context, PageRouteName.logIn, (_) => false);
                         },
                         child: Text(
                           "finish".tr(),

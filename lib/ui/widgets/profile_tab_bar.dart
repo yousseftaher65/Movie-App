@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movie_pojo/core/firebase/firebase_manegers.dart';
 import 'package:movie_pojo/core/routes/page_route_name.dart';
 
 class ProfileTabBar extends StatelessWidget {
@@ -84,7 +85,9 @@ class ProfileTabBar extends StatelessWidget {
             height: 23.h,
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w,),
+            padding: EdgeInsets.symmetric(
+              horizontal: 16.w,
+            ),
             child: SizedBox(
               height: 56.h,
               child: Row(
@@ -111,7 +114,14 @@ class ProfileTabBar extends StatelessWidget {
                   Expanded(
                     flex: 1,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        FireBaseManager.logOut();
+                        Navigator.pushNamedAndRemoveUntil(
+                          context,
+                          PageRouteName.logIn,
+                          (_) => false,
+                        );
+                      },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Theme.of(context).focusColor),
                       child: Row(
@@ -157,7 +167,7 @@ class ProfileTabBar extends StatelessWidget {
             tabs: [
               Tab(
                 icon: ImageIcon(
-                  size: 39,
+                  size: 39.sp,
                   color: Theme.of(context).cardColor,
                   const AssetImage(
                     'assets/icons/menu_icon.png',

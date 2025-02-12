@@ -13,13 +13,13 @@ dependencies:
   hive_flutter :
   supabase_flutter :
   http :
-  bloc :
-  flutter_bloc :
-  google_sign_in :
+  bloc : ^9.0.0
+  flutter_bloc : ^9.0.0
+  google_sign_in : ^6.2.2
   easy_localization :
   flutter_screenutil :
   google_fonts :
-  fluttertoast :
+  fluttertoast : ^8.2.12
   loader_overlay :
   animate_do :
   animated_toggle_switch :
@@ -27,6 +27,9 @@ dependencies:
   connectivity_plus :
   carousel_slider:
   introduction_screen: ^3.1.14
+  firebase_auth: ^5.4.2
+  firebase_core: ^3.11.0
+  cloud_firestore: ^5.6.3
 
 dev_dependencies:
   flutter_test:
