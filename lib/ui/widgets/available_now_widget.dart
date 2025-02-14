@@ -10,11 +10,14 @@ class AvailableNowWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Image.asset(
-          'assets/images/movie_poster.jpg',
-          fit: BoxFit.cover,
-          height: 621.h,
-          width: double.infinity,
+        AspectRatio(
+          aspectRatio: .690,
+          child: Image.asset(
+            'assets/images/movie_poster.jpg',
+            fit: BoxFit.cover,
+            //height: 621.h,
+            width: double.infinity,
+          ),
         ),
         Container(
           decoration: BoxDecoration(
@@ -39,19 +42,17 @@ class AvailableNowWidget extends StatelessWidget {
               CarouselSlider.builder(
                 options: CarouselOptions(
                     initialPage: 1,
-                    aspectRatio: 16 / 9,
+                    aspectRatio: 16/9,
                     animateToClosest: true,
                     disableCenter: false,
                     enlargeCenterPage: true,
                     //enableInfiniteScroll: false,
-                    viewportFraction:
-                        Localizations.localeOf(context).languageCode == 'ar'
-                            ? 0.50
-                            : 0.60,
+                    viewportFraction: 0.58,
                     enlargeStrategy: CenterPageEnlargeStrategy.zoom,
                     enlargeFactor: 0.46,
                     height: 351.h,
-                    scrollDirection: Axis.horizontal),
+                    scrollDirection: Axis.horizontal
+                ),
                 itemCount: 3,
                 itemBuilder: (context, index, realIndex) {
                   return const MovieCard(

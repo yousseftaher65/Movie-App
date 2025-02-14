@@ -24,9 +24,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-   return Scaffold(
-    resizeToAvoidBottomInset: false,
-    extendBody:true,
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      extendBody:true,
       body: Stack(
         children: [
           // Main Content
