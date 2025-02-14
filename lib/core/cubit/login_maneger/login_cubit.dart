@@ -24,14 +24,13 @@ class LoginCubit extends Cubit<LoginStates> {
     } on FirebaseAuthException catch (e) {
       if (e.code == "wrong-password") {
         emit(OnErrorLoginState("wrong_password".tr()));
-        print(e.code);
-        print("5");
+        // print(e.code);
       } else if (e.code == "user-not-found") {
         emit(OnErrorLoginState("email_not_found".tr()));
-        print("user-not-found");
+        // print("user-not-found");
       } else {
         emit(OnErrorLoginState("unknown_error"));
-        print("errrrrrrrr + ${e.code.toString()}");
+        // print("errrrrrrrr + ${e.code.toString()}");
       }
     }
   }

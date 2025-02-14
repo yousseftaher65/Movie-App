@@ -16,7 +16,7 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordStates> {
         emit(OnErrorForgetPasswordState("email_not_found".tr()));
       } else {
         emit(OnErrorForgetPasswordState("something_went_wrong".tr()));
-        print("email_not_found");
+        // print("email_not_found");
       }
     }
   }
