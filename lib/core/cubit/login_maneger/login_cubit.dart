@@ -31,6 +31,7 @@ class LoginCubit extends Cubit<LoginStates> {
       } else {
         emit(OnErrorLoginState("unknown_error"));
         // print("errrrrrrrr + ${e.code.toString()}");
+        print("testtt");
       }
     }
   }
