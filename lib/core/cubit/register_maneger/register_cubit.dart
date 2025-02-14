@@ -44,6 +44,9 @@ class RegisterCubit extends Cubit<RegisterStates> {
       }
     } catch (e) {
       emit(OnErrorRegisterState("something_went_wrong".tr()));
+
+
+
     }
   }
 }
