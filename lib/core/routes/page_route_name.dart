@@ -8,4 +8,7 @@ class PageRouteName {
   static const String onBoarding4 = '/onBoarding4';
   static const String onBoarding5 = '/onBoarding5';
   static const String onBoarding6 = '/onBoarding6';
+  static const String logIn = '/logIn';
+  static const String register = '/register';
+  static const String forgetPassword = '/forgetPassword';
 }
