@@ -1,0 +1,46 @@
+name: movie_pojo
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.5.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+  hive :
+  hive_flutter :
+  supabase_flutter :
+  http :
+  bloc : ^9.0.0
+  flutter_bloc : ^9.0.0
+  google_sign_in : ^6.2.2
+  easy_localization :
+  flutter_screenutil :
+  google_fonts :
+  fluttertoast : ^8.2.12
+  loader_overlay :
+  animate_do :
+  animated_toggle_switch :
+  cached_network_image :
+  connectivity_plus :
+  carousel_slider:
+  introduction_screen: ^3.1.14
+  firebase_auth: ^5.4.2
+  firebase_core: ^3.11.0
+  cloud_firestore: ^5.6.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+  - assets/
+  - assets/images/
+  - assets/logos/
+  - assets/translations/
+  - assets/icons/
