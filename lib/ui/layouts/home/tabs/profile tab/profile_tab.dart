@@ -34,13 +34,13 @@ class ProfileTab extends StatelessWidget {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.only(right: 16.0, left: 16, top: 16),
+                padding: EdgeInsets.only(right: 16.0.w, left: 16.w, top: 16.h),
                 child: CustomScrollView(
                   physics: const NeverScrollableScrollPhysics(),
                   slivers: [
                     SliverGrid(
                       delegate: SliverChildBuilderDelegate(
-                        (context, index) {
+                            (context, index) {
                           return const MovieCard(
                             cardHeight: double.infinity,
                             cardWidth: double.infinity,
@@ -48,10 +48,11 @@ class ProfileTab extends StatelessWidget {
                         },
                         childCount: 20,
                       ),
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        mainAxisSpacing: 16,
+                      gridDelegate:
+                      const SliverGridDelegateWithFixedCrossAxisCount(
+                          mainAxisSpacing: 16,
                           crossAxisSpacing: 16,
-                          childAspectRatio: 0.68 ,
+                          childAspectRatio: 0.68,
                           crossAxisCount: 3),
                     ),
                   ],

@@ -27,12 +27,12 @@ class _ExploreTabState extends State<ExploreTab> {
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
                       return GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            _currentIndex = index;
-                          });
-                        },
-                        child: CategoryItem(isSelected: _currentIndex == index)
+                          onTap: () {
+                            setState(() {
+                              _currentIndex = index;
+                            });
+                          },
+                          child: CategoryItem(isSelected: _currentIndex == index)
                       );
                     },
                     separatorBuilder: (context, index) => SizedBox(width: 8.w),
@@ -41,13 +41,12 @@ class _ExploreTabState extends State<ExploreTab> {
               SizedBox(
                 height: 24.h,
               ),
-             const CategoryListWidget(
+              const CategoryListWidget(
                 crossAxisCount: 2,
                 mainAxisSpacing: 8,
                 crossAxisSpacing: 20,
                 aspectRatio: 0.74,
-                itemCount: 20,
-             )
+              )
             ],
           ),
         ),

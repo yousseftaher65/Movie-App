@@ -20,8 +20,8 @@ class SearchTab extends StatelessWidget {
                 TextField(
                   autocorrect: true,
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: Theme.of(context).hintColor,
-                      ),
+                    color: Theme.of(context).hintColor,
+                  ),
                   decoration: InputDecoration(
                     prefixIcon: const ImageIcon(
                       AssetImage('assets/icons/search_icon.png'),

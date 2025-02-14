@@ -32,7 +32,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           ),
         ),
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          padding:  EdgeInsets.symmetric(horizontal: 16.0.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -61,8 +61,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               TextField(
                 autocorrect: true,
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      color: Theme.of(context).hintColor,
-                    ),
+                  color: Theme.of(context).hintColor,
+                ),
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.person),
                   hintText: 'name'.tr(),
@@ -76,8 +76,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 child: Text(
                   'delete_account'.tr(),
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        color: Theme.of(context).hintColor,
-                      ),
+                    color: Theme.of(context).hintColor,
+                  ),
                 ),
               ),
               SizedBox(
@@ -88,8 +88,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 child: Text(
                   'update_data'.tr(),
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        color: Theme.of(context).primaryColor,
-                      ),
+                    color: Theme.of(context).primaryColor,
+                  ),
                 ),
               ),
               SizedBox(

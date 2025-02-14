@@ -12,9 +12,9 @@ class OnBoarding1 extends StatelessWidget {
       children: [
         Image.asset(
           "assets/images/poster1.png",
-          height: double.infinity.h,
-          width: double.infinity.w,
-          fit: BoxFit.cover,
+          height: 932.h,
+          width: 430.w,
+          fit: BoxFit.fill,
         ),
         Padding(
           padding: EdgeInsets.symmetric(vertical: 50.0.h, horizontal: 16.w),
@@ -33,9 +33,7 @@ class OnBoarding1 extends StatelessWidget {
                       height: 24.h,
                     ),
                     Text("onboarding_one_content".tr(),
-                        style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                          color: Theme.of(context).hintColor.withOpacity(0.6)
-                        )),
+                        style: Theme.of(context).textTheme.headlineMedium),
                   ],
                 ),
               ),
@@ -46,7 +44,7 @@ class OnBoarding1 extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamedAndRemoveUntil(context, PageRouteName.testOnBoarding , (route)=> false);
+                    Navigator.pushNamed(context, PageRouteName.onBoarding2);
                   },
                   child: Text(
                     "explore_now.".tr(),
