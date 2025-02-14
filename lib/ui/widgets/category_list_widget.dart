@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_pojo/models/results.dart';
 import 'package:movie_pojo/ui/widgets/movie_card.dart';
 
 class CategoryListWidget extends StatelessWidget {
@@ -7,8 +8,10 @@ class CategoryListWidget extends StatelessWidget {
   final double crossAxisSpacing;
   final double aspectRatio;
   final int itemCount;
+  final List<Results>? results;
   const CategoryListWidget(
       {super.key,
+      this.results,
       required this.crossAxisCount,
       required this.mainAxisSpacing,
       required this.crossAxisSpacing,
@@ -22,7 +25,8 @@ class CategoryListWidget extends StatelessWidget {
         padding: EdgeInsets.zero,
         itemCount: itemCount,
         itemBuilder: (contxt, index) {
-          return const MovieCard(
+          return  MovieCard(
+            results: results?[index],
             cardHeight: double.infinity,
             cardWidth: double.infinity,
           );

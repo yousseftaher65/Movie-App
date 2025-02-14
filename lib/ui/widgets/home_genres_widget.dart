@@ -1,11 +1,13 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movie_pojo/models/results.dart';
 import 'package:movie_pojo/ui/widgets/movie_card.dart';
 
 class HomeGenresWidget extends StatelessWidget {
-  const HomeGenresWidget({super.key});
+  final List<Results>? data;
+  final String title;
+  const HomeGenresWidget({super.key, this.data, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,7 @@ class HomeGenresWidget extends StatelessWidget {
           child: Row(
             children: [
               Text(
-                'Action',
+                title,
                 style: Theme.of(context)
                     .textTheme
                     .bodyMedium
@@ -42,19 +44,35 @@ class HomeGenresWidget extends StatelessWidget {
           ),
         ),
         SizedBox(height: 16.h),
-        CarouselSlider.builder(
+        SizedBox(
+          height:220.h,
+          child: ListView.separated(
+            padding: EdgeInsets.symmetric(horizontal: 8.w),
+            scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+               return MovieCard(
+                results: data?[index],
+               );
+              },
+              separatorBuilder: (context, index) => SizedBox(width: 8.w),
+              itemCount: data?.length ?? 0),
+        ),
+        /*  CarouselSlider.builder(
           options: CarouselOptions(
               initialPage: 1,
               aspectRatio: 16 / 9,
               animateToClosest: true,
+              enableInfiniteScroll: false,
               disableCenter: true,
               viewportFraction: 0.36,
               scrollDirection: Axis.horizontal),
-          itemCount: 3,
+          itemCount: data?.length ?? 0,
           itemBuilder: (context, index, realIndex) {
-            return const MovieCard();
+            return MovieCard(
+              results: data?[index],
+            );
           },
-        ),
+        ), */
       ],
     );
   }

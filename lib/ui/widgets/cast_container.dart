@@ -1,8 +1,11 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movie_pojo/models/cast_response.dart';
 
 class CastContainer extends StatelessWidget {
-  const CastContainer({super.key});
+  final Cast? data;
+  const CastContainer({super.key, this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -17,39 +20,44 @@ class CastContainer extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(10.r),
-            child: Image.asset(
-              'assets/images/avater_1.png',
+            child: CachedNetworkImage(
+             imageUrl:  'https://image.tmdb.org/t/p/original/${data?.profilePath}',
               height: 70.h,
               width: 70.w,
               fit: BoxFit.cover,
+              placeholder: (context, url) => const Center(child: CircularProgressIndicator(),),
+              errorWidget: (context, url, error) => const Center(child: Icon(Icons.error),),
             ),
           ),
           SizedBox(
             width: 10.w,
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Name : Hayley Atwell',
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    color: Theme.of(context).hintColor,
-                    fontWeight: FontWeight.w400),
-                overflow: TextOverflow.ellipsis,
-                softWrap: true,
-              ),
-              SizedBox(
-                height: 11.h,
-              ),
-              Text(
-                'Character : Captain Carter',
-                style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    color: Theme.of(context).hintColor,
-                    fontWeight: FontWeight.w400),
-                overflow: TextOverflow.ellipsis,
-                softWrap: true,
-              ),
-            ],
+          Flexible(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Name : ${data?.name ?? ''} ',
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      color: Theme.of(context).hintColor,
+                      overflow: TextOverflow.ellipsis,
+                      fontWeight: FontWeight.w400),
+                  
+                  softWrap: true,
+                ),
+                SizedBox(
+                  height: 11.h,
+                ),
+                Text(
+                  'Character : ${data?.character ?? ''}',
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      color: Theme.of(context).hintColor,
+                      fontWeight: FontWeight.w400),
+                  overflow: TextOverflow.ellipsis,
+                  softWrap: true,
+                ),
+              ],
+            ),
           )
         ],
       ),

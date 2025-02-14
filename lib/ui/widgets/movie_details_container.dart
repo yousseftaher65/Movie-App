@@ -27,6 +27,7 @@ class MovieDetailsContainer extends StatelessWidget {
           ),
           Text(
             text,
+            overflow: TextOverflow.ellipsis,
             style: Theme.of(context).textTheme.titleLarge?.copyWith(
                   color: Theme.of(context).hintColor,
                 ),
