@@ -30,7 +30,7 @@ class LoginCubit extends Cubit<LoginStates> {
         // print("user-not-found");
       } else {
         emit(OnErrorLoginState("unknown_error"));
-        print("errrrrrrrr + ${e.code.toString()}");
+        // print("errrrrrrrr + ${e.code.toString()}");
       }
     }
   }
