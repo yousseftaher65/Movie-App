@@ -37,7 +37,6 @@ class MovieDetailsCubit extends Cubit<MovieDetailsStates> {
             'someting went wrong'));
       }
     } catch (e) {
-      print("==================================$e===========================");
       emit(MovieDetailsErrorState(e.toString()));
     }
   }

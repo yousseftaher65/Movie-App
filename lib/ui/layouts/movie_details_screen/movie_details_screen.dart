@@ -32,16 +32,15 @@ class MovieDetailsScreen extends StatelessWidget {
                 null,
                 context,
               );
-            } else if (state is MovieDetailsSuccessState) {
+            }
+            if (state is MovieDetailsLoadingState) {
+              context.loaderOverlay.show();
+            }
+            if (state is MovieDetailsSuccessState) {
               context.loaderOverlay.hide();
-              print("====================iam in success===============");
             }
           },
           builder: (context, state) {
-            if (state is MovieDetailsLoadingState) {
-              print("====================iam in Loading");
-              context.loaderOverlay.show();
-            }
             var data = context.read<MovieDetailsCubit>();
             return CustomScrollView(
               slivers: [

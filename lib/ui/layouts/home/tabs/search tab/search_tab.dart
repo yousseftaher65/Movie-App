@@ -89,12 +89,8 @@ class _SearchTabState extends State<SearchTab> {
                         listener: (context, state) {
                           if (state is SearchLoadingState) {
                             context.loaderOverlay.show();
-                            print(
-                                '===============================Loading =====================');
                           }
                           if (state is SearchErrorState) {
-                            print(
-                                '===============================error =====================');
                             context.loaderOverlay.hide();
                             DialogUtils.showMessage('Error', state.error,
                                 'Close', () {}, null, null, context);

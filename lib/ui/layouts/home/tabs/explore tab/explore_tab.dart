@@ -9,9 +9,16 @@ import 'package:movie_pojo/ui/widgets/category_item.dart';
 import 'package:movie_pojo/ui/widgets/category_list_widget.dart';
 import 'package:movie_pojo/ui/widgets/dialog_utils.dart';
 
-class ExploreTab extends StatelessWidget {
-  ExploreTab({super.key});
+class ExploreTab extends StatefulWidget {
+  const ExploreTab({super.key});
+
+  @override
+  State<ExploreTab> createState() => _ExploreTabState();
+}
+
+class _ExploreTabState extends State<ExploreTab> {
   final ScrollController scrollController = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,11 +29,10 @@ class ExploreTab extends StatelessWidget {
             create: (context) => ExploreCubit(GetMovieRepo())..getMovie(),
             child: BlocConsumer<ExploreCubit, ExploreStates>(
                 listener: (context, state) {
-               if (state is ExploreLoadingState) {
-                print(
-                    '===============================Loading =====================');
+              if (state is ExploreLoadingState) {
                 context.loaderOverlay.show();
-              } if (state is ExploreSuccessState) {
+              }
+              if (state is ExploreSuccessState) {
                 context.loaderOverlay.hide();
               }
               if (state is ExploreErrorState) {
@@ -36,8 +42,7 @@ class ExploreTab extends StatelessWidget {
                 }, null, null, context);
               }
             }, builder: (context, state) {
-              
-              var cubit = context.read<ExploreCubit>(); 
+              var cubit = context.read<ExploreCubit>();
               return Column(
                 children: [
                   SizedBox(
@@ -67,7 +72,7 @@ class ExploreTab extends StatelessWidget {
                     height: 24.h,
                   ),
                   NotificationListener<ScrollNotification>(
-                      onNotification: (scrollInfo) {
+                    onNotification: (scrollInfo) {
                       // Check if near the bottom, more pages are available,
                       // and we are not already fetching data.
                       if (scrollInfo.metrics.pixels >=
@@ -95,5 +100,11 @@ class ExploreTab extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
   }
 }
