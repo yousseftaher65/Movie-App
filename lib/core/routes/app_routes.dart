@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_pojo/core/cubit/movie_details_cubit/cubit.dart';
+import 'package:movie_pojo/core/repository/get_movie_repo.dart';
 import 'package:movie_pojo/core/routes/page_route_name.dart';
 import 'package:movie_pojo/ui/layouts/Auth/forget_password.dart';
 import 'package:movie_pojo/ui/layouts/Auth/login.dart';
@@ -19,24 +22,18 @@ abstract class AppRoutes {
     switch (settings.name) {
       case PageRouteName.initial:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
+      case PageRouteName.onBoardingScreen:
+        return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
       case PageRouteName.onBoarding1:
         return MaterialPageRoute(builder: (_) => const OnBoarding1());
-      case PageRouteName.onBoarding2:
-        return MaterialPageRoute(builder: (_) => const OnBoarding2());
-      case PageRouteName.onBoarding3:
-        return MaterialPageRoute(builder: (_) => const OnBoarding3());
-      case PageRouteName.onBoarding4:
-        return MaterialPageRoute(builder: (_) => const OnBoarding4());
-      case PageRouteName.onBoarding5:
-        return MaterialPageRoute(builder: (_) => const OnBoarding5());
-      case PageRouteName.onBoarding6:
-        return MaterialPageRoute(builder: (_) => const OnBoarding6());
-      case PageRouteName.logIn:
-        return MaterialPageRoute(builder: (_) => const Login());
-      case PageRouteName.register:
-        return MaterialPageRoute(builder: (_) => const  Register());
-      case PageRouteName.forgetPassword:
-        return MaterialPageRoute(builder: (_) =>  ForgetPassword());
+      case PageRouteName.movieDetails:
+        final data = settings.arguments as int;
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => MovieDetailsCubit(data,GetMovieRepo())..getDetails(),
+            child: const MovieDetailsScreen(),
+          ),
+        );
       case PageRouteName.home:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       case PageRouteName.editProfile:
