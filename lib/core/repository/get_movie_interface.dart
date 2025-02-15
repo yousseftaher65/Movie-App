@@ -5,7 +5,7 @@ import 'package:movie_pojo/models/page_response.dart';
 import 'package:movie_pojo/models/screen_shots_response.dart';
 
 abstract class GetMovieInterface {
-   Future<PageResponse> getMovies(MovieRequestType type, {String? query , int id});
+   Future<PageResponse> getMovies(MovieRequestType type, {String? query , int? id , int? page});
    Future<ScreenShotsResponse> getScreenShot(MovieRequestType type, {int id});
    Future<CastResponse> getCast(MovieRequestType type, { int id});
    Future<GenreReponse> getGenre(MovieRequestType type, { int id});

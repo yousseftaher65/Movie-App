@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CategoryItem extends StatelessWidget {
- final bool isSelected;
-  const CategoryItem({super.key , required this.isSelected});
+  final bool isSelected;
+ final String? genreName;
+  const CategoryItem({super.key,this.genreName, required this.isSelected});
 
   @override
   Widget build(BuildContext context) {
@@ -11,9 +12,7 @@ class CategoryItem extends StatelessWidget {
       alignment: Alignment.center,
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
       decoration: BoxDecoration(
-        color: isSelected
-            ? Theme.of(context).cardColor
-            : Colors.transparent,
+        color: isSelected ? Theme.of(context).cardColor : Colors.transparent,
         border: Border.all(
           width: 2,
           color: Theme.of(context).cardColor,
@@ -21,7 +20,7 @@ class CategoryItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(16.r),
       ),
       child: Text(
-        'Action',
+        genreName ?? 'Action',
         style: Theme.of(context).textTheme.bodySmall?.copyWith(
             color: isSelected
                 ? Theme.of(context).primaryColor

@@ -1,10 +1,12 @@
-import 'package:movie_pojo/core/cubit/base_states.dart';
+abstract class HomeStates {}
 
-class HomeTabLoadingState extends BaseStates {}
+class HomeInitStates extends HomeStates {}
 
-class HomeTabSuccessState extends BaseStates {}
+class HomeTabLoadingState extends HomeStates {}
 
-class HomeTabErrorState extends BaseStates {
+class HomeTabSuccessState extends HomeStates {}
+
+class HomeTabErrorState extends HomeStates {
   String error;
   HomeTabErrorState(this.error);
 }

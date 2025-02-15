@@ -9,9 +9,11 @@ class CategoryListWidget extends StatelessWidget {
   final double aspectRatio;
   final int itemCount;
   final List<Results>? results;
+  final ScrollController? controller;
   const CategoryListWidget(
       {super.key,
       this.results,
+      this.controller,
       required this.crossAxisCount,
       required this.mainAxisSpacing,
       required this.crossAxisSpacing,
@@ -22,10 +24,11 @@ class CategoryListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: GridView.builder(
+        controller: controller,
         padding: EdgeInsets.zero,
         itemCount: itemCount,
         itemBuilder: (contxt, index) {
-          return  MovieCard(
+          return MovieCard(
             results: results?[index],
             cardHeight: double.infinity,
             cardWidth: double.infinity,

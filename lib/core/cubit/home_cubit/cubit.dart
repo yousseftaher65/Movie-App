@@ -1,10 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_pojo/core/cubit/base_states.dart';
 import 'package:movie_pojo/core/cubit/home_cubit/states.dart';
 import 'package:movie_pojo/core/repository/get_movie_interface.dart';
 import 'package:movie_pojo/models/page_response.dart';
 
-class HomeTabCubit extends Cubit<BaseStates> {
+class HomeTabCubit extends Cubit<HomeStates> {
   PageResponse? nowPlayingMovies;
   PageResponse? trendingMovies;
   PageResponse? upcomingMovies;

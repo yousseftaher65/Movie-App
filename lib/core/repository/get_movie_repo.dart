@@ -12,7 +12,7 @@ import 'package:movie_pojo/models/screen_shots_response.dart';
 class GetMovieRepo implements GetMovieInterface {
   @override
   Future<PageResponse> getMovies(MovieRequestType type,
-      {String? query, int? id}) async {
+      {String? query, int? id , int? page}) async {
     String endpoint;
     switch (type) {
       case MovieRequestType.topRated:
@@ -31,7 +31,7 @@ class GetMovieRepo implements GetMovieInterface {
         endpoint = ApiManager.upcomingEndPoint;
         break;
       case MovieRequestType.getGenre:
-        endpoint = "${ApiManager.getgenreEndPoint}$id";
+        endpoint = "${ApiManager.getgenreEndPoint}&include_adult=false&include_video=false&language=en-US&page=$page&sort_by=popularity.desc&with_genres=$id";
         break;
       case MovieRequestType.search:
         endpoint =

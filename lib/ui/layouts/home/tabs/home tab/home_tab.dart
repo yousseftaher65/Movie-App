@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loader_overlay/loader_overlay.dart';
-import 'package:movie_pojo/core/cubit/base_states.dart';
 import 'package:movie_pojo/core/cubit/home_cubit/cubit.dart';
 import 'package:movie_pojo/core/cubit/home_cubit/states.dart';
 import 'package:movie_pojo/core/repository/get_movie_repo.dart';
@@ -20,7 +19,7 @@ class HomeTab extends StatelessWidget {
       body: BlocProvider(
         create: (context) => HomeTabCubit(GetMovieRepo())..getMovie(),
         child:
-            BlocConsumer<HomeTabCubit, BaseStates>(listener: (context, state) {
+            BlocConsumer<HomeTabCubit, HomeStates>(listener: (context, state) {
           if (state is HomeTabErrorState) {
             context.loaderOverlay.hide();
             DialogUtils.showMessage(
