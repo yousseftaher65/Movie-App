@@ -15,7 +15,7 @@ abstract class AppRoutes {
     switch (settings.name) {
       case PageRouteName.initial:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
-      case PageRouteName.testOnBoarding:
+      case PageRouteName.onBoardingScreen:
         return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
       case PageRouteName.onBoarding1:
         return MaterialPageRoute(builder: (_) => const OnBoarding1());

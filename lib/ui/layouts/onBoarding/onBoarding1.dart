@@ -46,7 +46,7 @@ class OnBoarding1 extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamedAndRemoveUntil(context, PageRouteName.testOnBoarding , (route)=> false);
+                    Navigator.pushNamedAndRemoveUntil(context, PageRouteName.onBoardingScreen , (route)=> false);
                   },
                   child: Text(
                     "explore_now.".tr(),

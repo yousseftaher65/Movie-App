@@ -1,14 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loader_overlay/loader_overlay.dart';
-import 'package:movie_pojo/core/constants/bloc_observer.dart';
 import 'package:movie_pojo/core/routes/app_routes.dart';
 import 'package:movie_pojo/core/theme/base_theme.dart';
 
 void main() async {
-   Bloc.observer = MyBlocObserver();
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   runApp(
