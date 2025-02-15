@@ -3,15 +3,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_pojo/core/theme/app_colors.dart';
 
 class AuthBtn extends StatelessWidget {
-  late String tittle;
-  late Widget prefixIcon;
-  late Widget? suffixIcon;
-  late bool show;
-  late Function(bool)? showPassword;
-  late TextEditingController textEditingController;
-  FormFieldValidator<String> validator;
+  final String tittle;
+  final Widget prefixIcon;
+  final Widget? suffixIcon;
+  final bool show;
+  final Function(bool)? showPassword;
+  final TextEditingController textEditingController;
+  final FormFieldValidator<String> validator;
 
-  AuthBtn({
+  const AuthBtn({
     super.key,
     required this.tittle,
     required this.prefixIcon,

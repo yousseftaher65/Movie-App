@@ -124,7 +124,6 @@ class _RegisterState extends State<Register> {
                                     setState(() {
                                       image = index;
                                     });
-                                    print(index);
                                   },
                                   child: Image(
                                     fit: BoxFit.contain,

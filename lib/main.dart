@@ -3,6 +3,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 import 'package:movie_pojo/core/routes/app_routes.dart';
 import 'package:movie_pojo/core/theme/base_theme.dart';
 import 'package:movie_pojo/firebase_options.dart';
@@ -34,13 +35,16 @@ class MainApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
         BaseTheme theme = BaseTheme();
-        return MaterialApp(
-          localizationsDelegates: context.localizationDelegates,
-          supportedLocales: context.supportedLocales,
-          locale: context.locale,
-          theme: theme.themeData,
-          debugShowCheckedModeBanner: false,
-          onGenerateRoute: AppRoutes.onGenerateRoute,
+        return GlobalLoaderOverlay(
+          overlayColor: Colors.transparent.withOpacity(.7),
+          child: MaterialApp(
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
+            locale: context.locale,
+            theme: theme.themeData ,
+            debugShowCheckedModeBanner: false,
+            onGenerateRoute: AppRoutes.onGenerateRoute,
+          ),
         );
       },
     );

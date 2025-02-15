@@ -48,7 +48,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           context, PageRouteName.home, (route) => false);
     } else {
       _controller.nextPage(
-        duration: const Duration(milliseconds: 300),
+        duration: const Duration(milliseconds: 800),
         curve: Curves.easeIn,
       );
     }
@@ -57,7 +57,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   void previousPage() {
     if (_controller.page?.toInt() != 0) {
       _controller.previousPage(
-        duration: const Duration(milliseconds: 300),
+        duration: const Duration(milliseconds: 800),
         curve: Curves.easeIn,
       );
     }
@@ -93,7 +93,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           PageView.builder(
             controller: _controller,
             itemCount: onboardingData.length,
-            physics: const BouncingScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             reverse: true,
             itemBuilder: (context, index) {
               return Image.asset(
