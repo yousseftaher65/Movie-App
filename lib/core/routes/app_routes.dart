@@ -10,6 +10,7 @@ import 'package:movie_pojo/ui/layouts/edit%20profile%20screen/edit_profile_scree
 import 'package:movie_pojo/ui/layouts/home/home_screen.dart';
 import 'package:movie_pojo/ui/layouts/movie_details_screen/movie_details_screen.dart';
 import 'package:movie_pojo/ui/layouts/onBoarding/onBoarding1.dart';
+import 'package:movie_pojo/ui/layouts/onBoarding/onBoarding_screen.dart';
 import 'package:movie_pojo/ui/layouts/splash%20screen/splash_screen.dart';
 
 abstract class AppRoutes {
@@ -17,6 +18,8 @@ abstract class AppRoutes {
     switch (settings.name) {
       case PageRouteName.initial:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
+      case PageRouteName.onBoardingScreen:
+      return MaterialPageRoute(builder: (_)=> const OnBoardingScreen());  
       case PageRouteName.onBoarding1:
         return MaterialPageRoute(builder: (_) => const OnBoarding1());
       case PageRouteName.movieDetails:

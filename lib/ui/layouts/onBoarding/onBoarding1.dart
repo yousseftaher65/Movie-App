@@ -12,8 +12,8 @@ class OnBoarding1 extends StatelessWidget {
       children: [
         Image.asset(
           "assets/images/poster1.png",
-          height: 932.h,
-          width: 430.w,
+          height: double.infinity.h,
+          width: double.infinity.w,
           fit: BoxFit.fill,
         ),
         Padding(
@@ -33,7 +33,9 @@ class OnBoarding1 extends StatelessWidget {
                       height: 24.h,
                     ),
                     Text("onboarding_one_content".tr(),
-                        style: Theme.of(context).textTheme.headlineMedium),
+                        style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                          color: Theme.of(context).hintColor.withOpacity(0.7)
+                        )),
                   ],
                 ),
               ),

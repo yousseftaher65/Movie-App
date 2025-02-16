@@ -28,13 +28,7 @@ class _ExploreTabState extends State<ExploreTab> {
           child: BlocProvider(
             create: (context) => ExploreCubit(GetMovieRepo())..getMovie(),
             child: BlocConsumer<ExploreCubit, ExploreStates>(
-                listener: (context, state) {
-              if (state is ExploreLoadingState) {
-                context.loaderOverlay.show();
-              }
-              if (state is ExploreSuccessState) {
-                context.loaderOverlay.hide();
-              }
+                listener: (context, state) {             
               if (state is ExploreErrorState) {
                 context.loaderOverlay.hide();
                 DialogUtils.showMessage('Error', state.error, "Close", () {
@@ -43,6 +37,12 @@ class _ExploreTabState extends State<ExploreTab> {
               }
             }, builder: (context, state) {
               var cubit = context.read<ExploreCubit>();
+               if (state is ExploreLoadingState) {
+                context.loaderOverlay.show();
+              }
+              if (state is ExploreSuccessState) {
+                context.loaderOverlay.hide();
+              }
               return Column(
                 children: [
                   SizedBox(
@@ -90,7 +90,7 @@ class _ExploreTabState extends State<ExploreTab> {
                       mainAxisSpacing: 8,
                       crossAxisSpacing: 20,
                       aspectRatio: 0.74,
-                      itemCount: cubit.loadedMovies?.length ?? 0,
+                      itemCount: cubit.loadedMovies?.length ?? 0
                     ),
                   ),
                 ],

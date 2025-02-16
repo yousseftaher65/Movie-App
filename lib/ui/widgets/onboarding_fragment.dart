@@ -43,10 +43,11 @@ class OnboardingFragment extends StatelessWidget {
                         title.tr(),
                         style: Theme.of(context).textTheme.headlineLarge,
                       ),
-                      if (index != 5)
                         SizedBox(
                           height: 16.h,
                         ),
+                      index == 4?
+                      const SizedBox.shrink():  
                       Text(
                         description.tr(),
                         style: Theme.of(context)

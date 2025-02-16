@@ -167,7 +167,7 @@ class ProfileTabBar extends StatelessWidget {
             tabs: [
               Tab(
                 icon: ImageIcon(
-                  size: 39.sp,
+                  size: 29.sp,
                   color: Theme.of(context).cardColor,
                   const AssetImage(
                     'assets/icons/menu_icon.png',

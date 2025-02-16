@@ -26,6 +26,7 @@ class CategoryListWidget extends StatelessWidget {
       child: GridView.builder(
         controller: controller,
         padding: EdgeInsets.zero,
+        itemCount: itemCount,
         itemBuilder: (contxt, index) {
           return MovieCard(
             results: results?[index],

@@ -33,15 +33,16 @@ class MovieDetailsScreen extends StatelessWidget {
                 context,
               );
             }
-            if (state is MovieDetailsLoadingState) {
+           
+          },
+          builder: (context, state) {
+            var data = context.read<MovieDetailsCubit>();
+             if (state is MovieDetailsLoadingState) {
               context.loaderOverlay.show();
             }
             if (state is MovieDetailsSuccessState) {
               context.loaderOverlay.hide();
             }
-          },
-          builder: (context, state) {
-            var data = context.read<MovieDetailsCubit>();
             return CustomScrollView(
               slivers: [
                 SliverToBoxAdapter(
