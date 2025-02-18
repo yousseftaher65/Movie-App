@@ -45,7 +45,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   void nextPage() {
     if (_controller.page?.toInt() == onboardingData.length - 1) {
       Navigator.pushNamedAndRemoveUntil(
-          context, PageRouteName.home, (route) => false);
+          context, PageRouteName.logIn, (route) => false);
     } else {
       _controller.nextPage(
         duration: const Duration(milliseconds: 800),

@@ -3,6 +3,7 @@ class PageRouteName {
   static const String home = '/home';
   static const String movieDetails = 'movieDetalis';
   static const String editProfile = '/editProfile';
+  static const String profileTab = '/profileTab';
   static const String onBoardingScreen = '/onBoardingScreen';
   static const String onBoarding1 = '/onBoarding1';
   static const String logIn = '/logIn';

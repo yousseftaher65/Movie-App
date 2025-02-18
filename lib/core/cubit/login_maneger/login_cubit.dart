@@ -28,7 +28,7 @@ class LoginCubit extends Cubit<LoginStates> {
         emit(OnErrorLoginState("email_not_found".tr()));
         // print("user-not-found");
       } else {
-        emit(OnErrorLoginState("unknown_error"));
+        emit(OnErrorLoginState("email_or_password_not_correct".tr()));
       }
     }
   }
