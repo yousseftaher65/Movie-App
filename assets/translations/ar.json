@@ -45,6 +45,7 @@
   "please_enter_email": "يرجى إدخال عنوان بريدك الإلكتروني.",
   "please_enter_valid_email": "يرجى إدخال عنوان بريد إلكتروني صالح.",
   "email_or_password_not_correct": "البريد الالكتروني او كامة المرورو غير صحيحه",
+  "email_not_verified": "البريد الإلكتروني غير مُحقق",
   "please_enter_password": "يرجى إدخال كلمة مرور.",
   "please_enter_name": "يرجى إدخال اسم.",
   "forgot_password": "هل نسيت كلمة المرور؟",

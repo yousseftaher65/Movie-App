@@ -106,12 +106,13 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       child: GestureDetector(
                         onTap: () async {
                           return await showDialog(
-                              barrierDismissible: true,
-                              context: context,
-                              builder: (context) {
-                                return AvaterDialogWidget(
-                                    onAvatarSelected: _updateAvatarIndex);
-                              });
+                            barrierDismissible: true,
+                            context: context,
+                            builder: (context) {
+                              return AvaterDialogWidget(
+                                  onAvatarSelected: _updateAvatarIndex);
+                            },
+                          );
                         },
                         child: Padding(
                           padding: EdgeInsets.symmetric(vertical: 36.h),
@@ -137,7 +138,24 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     ),
                     const Spacer(),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        bloc.deleteUser();
+                        bloc.deleteUserData(bloc.userModel!.id);
+                        Navigator.pushNamedAndRemoveUntil(
+                          context,
+                          PageRouteName.logIn,
+                          (context) => false,
+                        );
+                        Fluttertoast.showToast(
+                          msg: "account_deleted_successfully".tr(),
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.BOTTOM,
+                          timeInSecForIosWeb: 2,
+                          backgroundColor: AppColors.whiteColor,
+                          textColor: AppColors.primaryColor,
+                          fontSize: BaseTheme.contentTxt.fontSize,
+                        );
+                      },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Theme.of(context).focusColor),
                       child: Text(

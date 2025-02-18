@@ -17,7 +17,12 @@ class UserDataCubit extends Cubit<UserDataStates> {
     await FirebaseAuth.instance.signOut();
   }
 
-  intUser() async {
+  /// Delete User
+  void deleteUser() async {
+    await FirebaseAuth.instance.currentUser?.delete();
+  }
+
+  void intUser() async {
     currentUser = FirebaseAuth.instance.currentUser;
     userModel = await getUser(currentUser!.uid);
     emit(state);
@@ -52,5 +57,12 @@ class UserDataCubit extends Cubit<UserDataStates> {
     } catch (e) {
       emit(UpdateDataUserErrorState("something_went_wrong".tr()));
     }
+  }
+
+  /// Delete User Data
+
+  deleteUserData(String? userId) {
+    var deleteUser = FireBaseManager.getUserCollection();
+    return deleteUser.doc(userId).delete();
   }
 }
