@@ -27,11 +27,12 @@ class AuthBtn extends StatelessWidget {
     return TextFormField(
       validator: validator,
       obscureText: show,
-      obscuringCharacter: '*',
+      //obscuringCharacter: '*',
       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
           color: AppColors.whiteColor, decoration: TextDecoration.none),
       controller: textEditingController,
       decoration: InputDecoration(
+        alignLabelWithHint: true,
         errorStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
               color: AppColors.redColor,
             ),

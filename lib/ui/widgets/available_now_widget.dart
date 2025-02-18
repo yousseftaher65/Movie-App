@@ -37,7 +37,7 @@ class _AvailableNowWidgetState extends State<AvailableNowWidget> {
                 ),
               ),
               Container(
-                 height: 622.h,
+                 //height: 622.h,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                       begin: Alignment.topCenter,

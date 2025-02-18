@@ -70,5 +70,7 @@
   "movie_unfavorite_successfully": "تمت إزالة الفيلم من المفضلة بنجاح.",
   "loading": "جار التحميل...",
   "user": "مستخدم",
-  "this_field_is_required": "هذه الخانة مطلوبة."
+  "this_field_is_required": "هذه الخانة مطلوبة.",
+  "phone_number":"رقم الهاتف",
+  "verify_email":"تأكيد الحساب"
 }

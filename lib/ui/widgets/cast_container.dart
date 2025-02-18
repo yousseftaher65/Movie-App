@@ -10,9 +10,9 @@ class CastContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 92.h,
+      //height: 92.h,
       width: double.infinity.w,
-      padding: const EdgeInsets.all(11),
+      padding:  EdgeInsets.symmetric(horizontal:  11.w , vertical: 11.h),
       decoration: BoxDecoration(
           color: Theme.of(context).secondaryHeaderColor,
           borderRadius: BorderRadius.circular(16.r)),

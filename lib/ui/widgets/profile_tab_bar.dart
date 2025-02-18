@@ -160,7 +160,7 @@ class ProfileTabBar extends StatelessWidget {
                     horizontal: 16.w,
                   ),
                   child: SizedBox(
-                    height: 56.h,
+                    height: 60.h,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

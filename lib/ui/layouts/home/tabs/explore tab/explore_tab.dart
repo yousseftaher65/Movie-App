@@ -24,11 +24,17 @@ class _ExploreTabState extends State<ExploreTab> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding:  EdgeInsets.only(top: 16.h, left: 16.w, right: 16.w),
+          padding: EdgeInsets.only(top: 16.h, left: 16.w, right: 16.w),
           child: BlocProvider(
             create: (context) => ExploreCubit(GetMovieRepo())..getMovie(),
             child: BlocConsumer<ExploreCubit, ExploreStates>(
-                listener: (context, state) {             
+                listener: (context, state) {
+              if (state is ExploreLoadingState) {
+                context.loaderOverlay.show();
+              }
+              if (state is ExploreSuccessState) {
+                context.loaderOverlay.hide();
+              }
               if (state is ExploreErrorState) {
                 context.loaderOverlay.hide();
                 DialogUtils.showMessage('Error', state.error, "Close", () {
@@ -37,12 +43,6 @@ class _ExploreTabState extends State<ExploreTab> {
               }
             }, builder: (context, state) {
               var cubit = context.read<ExploreCubit>();
-               if (state is ExploreLoadingState) {
-                context.loaderOverlay.show();
-              }
-              if (state is ExploreSuccessState) {
-                context.loaderOverlay.hide();
-              }
               return Column(
                 children: [
                   SizedBox(
@@ -84,14 +84,13 @@ class _ExploreTabState extends State<ExploreTab> {
                       return false;
                     },
                     child: CategoryListWidget(
-                      controller: scrollController,
-                      results: cubit.loadedMovies,
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 8,
-                      crossAxisSpacing: 20,
-                      aspectRatio: 0.74,
-                      itemCount: cubit.loadedMovies?.length ?? 0
-                    ),
+                        controller: scrollController,
+                        results: cubit.loadedMovies,
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 8,
+                        crossAxisSpacing: 20,
+                        aspectRatio: 0.74,
+                        itemCount: cubit.loadedMovies?.length ?? 0),
                   ),
                 ],
               );

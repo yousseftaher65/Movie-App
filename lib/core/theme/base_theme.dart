@@ -6,38 +6,38 @@ import 'package:movie_pojo/core/theme/app_colors.dart';
 class BaseTheme {
   static TextStyle get onBoardingTitleTxt => GoogleFonts.inter(
     fontWeight: FontWeight.w700,
-    fontSize: 24.sp,
+    fontSize: 24,
   );
   static TextStyle get onBoardingContentTxt => GoogleFonts.inter(
     fontWeight: FontWeight.w400,
-    fontSize: 20.sp,
+    fontSize: 20,
   );
 
   static TextStyle get onBoardingButtonTxt => GoogleFonts.inter(
     fontWeight: FontWeight.w600,
-    fontSize: 20.sp,
+    fontSize: 20,
   );
   static TextStyle get categoryTxt => GoogleFonts.inter(
     fontWeight: FontWeight.w700,
-    fontSize: 20.sp,
+    fontSize: 20,
   );
 
   static TextStyle get titleTxt => GoogleFonts.roboto(
     fontWeight: FontWeight.w700,
-    fontSize: 24.sp,
+    fontSize: 24,
   );
 
   static TextStyle get supTitleTxt => GoogleFonts.roboto(
     fontWeight: FontWeight.w700,
-    fontSize: 20.sp,
+    fontSize: 20,
   );
 
   static TextStyle get contentTxt =>
-      GoogleFonts.roboto(fontWeight: FontWeight.w400, fontSize: 16.sp);
+      GoogleFonts.roboto(fontWeight: FontWeight.w400, fontSize: 16);
 
   static TextStyle get supContentTxt => GoogleFonts.roboto(
     fontWeight: FontWeight.w400,
-    fontSize: 14.sp,
+    fontSize: 14,
   );
 
   ThemeData themeData = ThemeData(

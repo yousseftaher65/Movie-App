@@ -24,7 +24,7 @@ class UserDataCubit extends Cubit<UserDataStates> {
 
   void intUser() async {
     currentUser = FirebaseAuth.instance.currentUser;
-    userModel = await getUser(currentUser!.uid);
+    userModel = await getUser(currentUser?.uid ?? '');
     emit(state);
   }
 
