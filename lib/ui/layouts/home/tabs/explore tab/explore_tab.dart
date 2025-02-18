@@ -24,7 +24,7 @@ class _ExploreTabState extends State<ExploreTab> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
+          padding:  EdgeInsets.only(top: 16.h, left: 16.w, right: 16.w),
           child: BlocProvider(
             create: (context) => ExploreCubit(GetMovieRepo())..getMovie(),
             child: BlocConsumer<ExploreCubit, ExploreStates>(
