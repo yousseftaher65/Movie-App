@@ -36,7 +36,7 @@ class _AvaterDialogWidgetState extends State<AvaterDialogWidget> {
                   crossAxisCount: 3,
                   mainAxisSpacing: 19.h,
                   crossAxisSpacing: 18.w,
-                  childAspectRatio: 1.024),
+                  childAspectRatio: 1.024.sp),
               itemCount: 9,
               itemBuilder: (context, index) {
                 return GestureDetector(

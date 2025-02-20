@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:movie_pojo/core/cubit/user_profile_cubit/user_profile_states.dart';
 import '../../firebase/firebase_manegers.dart';
 import '../../models/user_model.dart';
@@ -14,7 +15,18 @@ class UserDataCubit extends Cubit<UserDataStates> {
 
   ///Logout
   void logOut() async {
-    await FirebaseAuth.instance.signOut();
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    final User? user = auth.currentUser;
+    if (user != null) {
+      for (var provider in user.providerData) {
+        if (provider.providerId == 'google.com') {
+          // Google sign-out
+          GoogleSignIn googleSignOut = GoogleSignIn();
+          await googleSignOut.disconnect();
+        }
+      }
+        await FirebaseAuth.instance.signOut();
+    }
   }
 
   /// Delete User

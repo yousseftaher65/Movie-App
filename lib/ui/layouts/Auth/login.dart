@@ -294,7 +294,14 @@ class _LoginState extends State<Login> {
                           width: double.infinity,
                           child: ElevatedButton(
                             onPressed: () {
-                              // Navigator.pushNamed(context, Register.routeName);
+                              bloc.signInWithGoogle();
+                                if (state is OnSuccessLoginState){
+                                Navigator.pushNamedAndRemoveUntil(
+                                  context,
+                                  PageRouteName.home,
+                                  (_) => false,
+                                );
+                              }
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,

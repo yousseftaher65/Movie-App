@@ -12,7 +12,12 @@
           "package_name": "com.example.movie_pojo"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "606354289039-dgvhg7o172916sodq1g62l8gvg9si2a8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCGk_Co_mPcCxf5ixc163xmGdmzCfXv_BY"
@@ -20,7 +25,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "606354289039-dgvhg7o172916sodq1g62l8gvg9si2a8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "606354289039-9a1n098th4rq7044arhfiuhuv5v2ren8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.moviePojo"
+              }
+            }
+          ]
         }
       }
     }
