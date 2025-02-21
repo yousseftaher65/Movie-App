@@ -22,4 +22,30 @@ class FireBaseManager {
     var userRef = createUser.doc(user.id);
     return userRef.set(user);
   }
+
+  static Future<void> updateUserFavorite(String userId, int movieId) {
+    var updateUserData = getUserCollection();
+    return updateUserData.doc(userId).update({
+      'favorite_list': FieldValue.arrayUnion([movieId])
+    });
+  }
+
+  static Future<void> updateUserHistory(String userId, int movieId) {
+    var updateUserData = getUserCollection();
+    return updateUserData.doc(userId).update({
+      'history_list': FieldValue.arrayUnion([movieId])
+    });
+  }
+
+  static Future<List<int?>> getUserHistory(String userId) async {
+    var getUserData = getUserCollection();
+    DocumentSnapshot<UserModel> userResponse = await getUserData.doc(userId).get();
+    return userResponse.data()?.historyList??[];
+  }
+
+  static Future<List<int?>> getUserFavorite(String userId) async {
+    var getUserData = getUserCollection();
+    DocumentSnapshot<UserModel> userResponse = await getUserData.doc(userId).get();
+    return userResponse.data()?.favoriteList??[];
+  }
 }

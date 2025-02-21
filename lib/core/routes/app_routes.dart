@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_pojo/core/cubit/movie_details_cubit/cubit.dart';
-import 'package:movie_pojo/core/cubit/user_profile_cubit/user_profile_cubit.dart';
-import 'package:movie_pojo/core/cubit/user_profile_cubit/user_profile_states.dart';
 import 'package:movie_pojo/core/repository/get_movie_repo.dart';
 import 'package:movie_pojo/core/routes/page_route_name.dart';
 import 'package:movie_pojo/ui/layouts/Auth/forget_password.dart';
@@ -14,7 +12,6 @@ import 'package:movie_pojo/ui/layouts/movie_details_screen/movie_details_screen.
 import 'package:movie_pojo/ui/layouts/onBoarding/onBoarding1.dart';
 import 'package:movie_pojo/ui/layouts/onBoarding/onBoarding_screen.dart';
 import 'package:movie_pojo/ui/layouts/splash%20screen/splash_screen.dart';
-import 'package:movie_pojo/ui/widgets/profile_tab_bar.dart';
 
 abstract class AppRoutes {
   static Route onGenerateRoute(RouteSettings settings) {
@@ -23,24 +20,8 @@ abstract class AppRoutes {
         return MaterialPageRoute(builder: (_) => const SplashScreen());
       case PageRouteName.onBoardingScreen:
         return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
-      case PageRouteName.onBoarding1:
-        return MaterialPageRoute(
-          builder: (_) => BlocProvider<UserDataCubit>(
-            create: (context) => UserDataCubit()..intUser(),
-            child: BlocBuilder<UserDataCubit, UserDataStates>(
-              builder: (context, state) {
-                var bloc = BlocProvider.of<UserDataCubit>(context);
-                if (bloc.currentUser != null) {
-                  return const HomeScreen();
-                } else {
-                  return const OnBoarding1();
-                }
-              },
-            ),
-          ),
-        );
-      // case PageRouteName.onBoarding1:
-      //   return MaterialPageRoute(builder: (_) => const OnBoarding1());
+       case PageRouteName.onBoarding1:
+         return MaterialPageRoute(builder: (_) => const OnBoarding1());
       case PageRouteName.movieDetails:
         final data = settings.arguments as int;
         return MaterialPageRoute(
@@ -60,8 +41,6 @@ abstract class AppRoutes {
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       case PageRouteName.editProfile:
         return MaterialPageRoute(builder: (_) => const EditProfileScreen());
-      case PageRouteName.profileTab:
-        return MaterialPageRoute(builder: (_) => const ProfileTabBar());
       default:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
     }

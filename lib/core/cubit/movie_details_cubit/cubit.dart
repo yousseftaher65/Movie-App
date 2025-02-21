@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_pojo/core/cubit/movie_details_cubit/states.dart';
+import 'package:movie_pojo/core/firebase/firebase_manegers.dart';
 import 'package:movie_pojo/core/repository/get_movie_interface.dart';
 import 'package:movie_pojo/models/cast_response.dart';
 import 'package:movie_pojo/models/movie_details_response.dart';
@@ -54,5 +56,15 @@ class MovieDetailsCubit extends Cubit<MovieDetailsStates> {
   Future<void> getSimilar() async {
     pageResponse = await getMovieInterface.getMovies(MovieRequestType.similar,
         id: movieId);
+  }
+
+  void addFavorite() async {
+    final userId = FirebaseAuth.instance.currentUser!.uid;
+    await FireBaseManager.updateUserFavorite(userId, movieId);
+  }
+
+  void addHistory() async {
+    final userId = FirebaseAuth.instance.currentUser!.uid;
+     await FireBaseManager.updateUserHistory(userId, movieId);
   }
 }

@@ -1,17 +1,20 @@
 class UserModel {
   String? name;
-
   String? email;
   String? id;
   String? phoneNumber;
   int? imageIndex;
+  List<int?>? favoriteList;
+  List<int?>? historyList ;
 
   UserModel({
-    required this.name,
-    required this.email,
-    required this.id,
-    required this.phoneNumber,
-    required this.imageIndex,
+    this.name,
+    this.email,
+    this.id,
+    this.phoneNumber,
+    this.imageIndex,
+    this.favoriteList = const [],
+    this.historyList = const [],
   });
 
   UserModel.frmJson(Map<String , dynamic> json):this (
@@ -20,6 +23,8 @@ class UserModel {
     id: json['id'] as String,
     phoneNumber: json['phone_number'] as String,
     imageIndex: json['image_index'] as int,
+    favoriteList: List<int>.from(json['favorite_list'] ?? []),
+    historyList: List<int>.from(json['history_list'] ?? []),
   );
 
   Map<String , dynamic>toJson (){
@@ -29,6 +34,8 @@ class UserModel {
       'id': id,
       'phone_number': phoneNumber,
       'image_index': imageIndex,
+      'favorite_list': favoriteList,
+      'history_list': historyList,
     };
   }
 }

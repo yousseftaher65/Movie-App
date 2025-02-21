@@ -1,77 +1,18 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:loader_overlay/loader_overlay.dart';
 import 'package:movie_pojo/core/cubit/user_profile_cubit/user_profile_cubit.dart';
-import 'package:movie_pojo/core/cubit/user_profile_cubit/user_profile_states.dart';
-import 'package:movie_pojo/core/models/user_model.dart';
 import 'package:movie_pojo/core/routes/page_route_name.dart';
-import 'package:movie_pojo/core/theme/app_colors.dart';
 
 class ProfileTabBar extends StatelessWidget {
-  final UserModel? model;
-
-  const ProfileTabBar({super.key, this.model});
+  final UserDataCubit? userBloc;
+  const ProfileTabBar({
+    this.userBloc,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => UserDataCubit()..intUser(),
-      child: BlocConsumer<UserDataCubit, UserDataStates>(
-        listener: (context, state) {
-          if (state is UserDataErrorState) {
-            Navigator.pop(context);
-            showDialog(
-              context: context,
-              builder: (context) => AlertDialog(
-                title: Text(
-                  'something_went_wrong'.tr(),
-                ),
-                content: Text(
-                  state.message,
-                ),
-                actions: [
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: Text(
-                      "ok".tr(),
-                    ),
-                  ),
-                ],
-              ),
-            );
-          } else if (state is UserDataLoadingState) {
-            showDialog(
-              context: context,
-              builder: (_) => const AlertDialog(
-                backgroundColor: Colors.transparent,
-                title: Center(
-                  child: CircularProgressIndicator(
-                    color: AppColors.accentColor,
-                  ),
-                ),
-              ),
-            );
-          }
-        },
-        builder: (context, state) {
-          var userBloc = BlocProvider.of<UserDataCubit>(context);
-          if (state is UserDataLoadingState) {
-            context.loaderOverlay.show(
-              showOverlay: false,
-              widgetBuilder: (_) => const Center(
-                child: CircularProgressIndicator(
-                  backgroundColor: AppColors.accentColor,
-                ),
-              ),
-            );
-          }
-          if (state is UserDataSuccessState) {
-            context.loaderOverlay.hide();
-          }
           return Container(
             color: Theme.of(context).secondaryHeaderColor,
             child: Column(
@@ -86,7 +27,7 @@ class ProfileTabBar extends StatelessWidget {
                       Column(
                         children: [
                           Image.asset(
-                            'assets/images/avater_${(userBloc.userModel?.imageIndex ?? 0) + 1}.png',
+                            'assets/images/avater_${(userBloc?.userModel?.imageIndex ?? 0) + 1}.png',
                             fit: BoxFit.cover,
                             height: 118.h,
                             width: 118.h,
@@ -95,7 +36,7 @@ class ProfileTabBar extends StatelessWidget {
                             height: 15.h,
                           ),
                           Text(
-                            "${userBloc.userModel?.name}",
+                            userBloc?.userModel?.name ?? '',
                             style: Theme.of(context)
                                 .textTheme
                                 .titleMedium
@@ -106,7 +47,9 @@ class ProfileTabBar extends StatelessWidget {
                       Column(
                         children: [
                           Text(
-                            '10',
+                            userBloc?.userModel?.favoriteList?.length
+                                    .toString() ??
+                                '0',
                             style: Theme.of(context)
                                 .textTheme
                                 .titleLarge
@@ -129,7 +72,9 @@ class ProfileTabBar extends StatelessWidget {
                       Column(
                         children: [
                           Text(
-                            '10',
+                            userBloc?.userModel?.historyList?.length
+                                    .toString() ??
+                                '0',
                             style: Theme.of(context)
                                 .textTheme
                                 .titleLarge
@@ -171,7 +116,7 @@ class ProfileTabBar extends StatelessWidget {
                               Navigator.pushNamed(
                                 context,
                                 PageRouteName.editProfile,
-                                arguments: userBloc.userData,
+                                arguments: userBloc?.userData,
                               );
                             },
                             child: Text(
@@ -192,7 +137,7 @@ class ProfileTabBar extends StatelessWidget {
                           flex: 1,
                           child: ElevatedButton(
                             onPressed: () {
-                              userBloc.logOut();
+                              userBloc?.logOut();
                               Navigator.pushNamedAndRemoveUntil(
                                 context,
                                 PageRouteName.logIn,
@@ -244,7 +189,7 @@ class ProfileTabBar extends StatelessWidget {
                   tabs: [
                     Tab(
                       icon: ImageIcon(
-                        size: 29.sp,
+                        size: 29,
                         color: Theme.of(context).cardColor,
                         const AssetImage(
                           'assets/icons/menu_icon.png',
@@ -256,7 +201,7 @@ class ProfileTabBar extends StatelessWidget {
                     ),
                     Tab(
                       icon: ImageIcon(
-                        size: 29.sp,
+                        size: 39,
                         color: Theme.of(context).cardColor,
                         const AssetImage('assets/icons/folder_icon.png'),
                       ),
@@ -269,8 +214,5 @@ class ProfileTabBar extends StatelessWidget {
               ],
             ),
           );
-        },
-      ),
-    );
   }
 }

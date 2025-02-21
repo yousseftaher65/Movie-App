@@ -33,11 +33,10 @@ class MovieDetailsScreen extends StatelessWidget {
                 context,
               );
             }
-           
           },
           builder: (context, state) {
             var data = context.read<MovieDetailsCubit>();
-             if (state is MovieDetailsLoadingState) {
+            if (state is MovieDetailsLoadingState) {
               context.loaderOverlay.show();
             }
             if (state is MovieDetailsSuccessState) {
@@ -47,14 +46,22 @@ class MovieDetailsScreen extends StatelessWidget {
               slivers: [
                 SliverToBoxAdapter(
                   child: PlayMovieWidget(
+                    onTap: () {
+                      data.addFavorite();
+                    },
                     data: data.movieDetailsResponse,
                   ),
                 ),
                 SliverToBoxAdapter(
-                    child: WatchBtnAndScreenShots(
-                  images: data.screenShotsResponse,
-                  data: data.movieDetailsResponse,
-                )),
+                  child: WatchBtnAndScreenShots(
+                    onTap: () {
+                      print('-----------------------------watch');
+                      data.addHistory();
+                    },
+                    images: data.screenShotsResponse,
+                    data: data.movieDetailsResponse,
+                  ),
+                ),
                 SliverPadding(
                   padding: EdgeInsets.symmetric(horizontal: 16.w),
                   sliver: SliverGrid(
