@@ -7,7 +7,6 @@ import 'package:movie_pojo/core/cubit/user_profile_cubit/user_profile_cubit.dart
 import 'package:movie_pojo/core/cubit/user_profile_cubit/user_profile_states.dart';
 import 'package:movie_pojo/core/routes/page_route_name.dart';
 import 'package:movie_pojo/ui/widgets/avater_dialog_widget.dart';
-
 import '../../../core/models/user_model.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/base_theme.dart';
@@ -32,7 +31,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => UserDataCubit()..intUser(),
+      create: (context) => UserDataCubit()..initUser(),
       child: BlocConsumer<UserDataCubit, UserDataStates>(
         listener: (context, state) {
           if (state is UpdateDataUserErrorState) {
@@ -175,9 +174,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                             name: nameController.text.isEmpty
                                 ? bloc.userModel!.name
                                 : nameController.text,
-                            email: bloc.userModel!.email,
                             id: bloc.userModel!.id,
-                            phoneNumber: bloc.userModel!.phoneNumber,
                             imageIndex: currentIndex != 0
                                 ? currentIndex
                                 : bloc.userModel!.imageIndex);

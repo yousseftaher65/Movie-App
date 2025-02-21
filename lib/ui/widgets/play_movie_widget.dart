@@ -5,7 +5,8 @@ import 'package:movie_pojo/models/movie_details_response.dart';
 
 class PlayMovieWidget extends StatelessWidget {
   final MovieDetailsResponse? data;
-  const PlayMovieWidget({super.key , this.data});
+  final Function onTap;
+  const PlayMovieWidget({super.key ,required this.onTap, this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +55,9 @@ class PlayMovieWidget extends StatelessWidget {
                     ),
                   ),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      onTap();
+                    },
                     icon: ImageIcon(
                       size: 29,
                       color: Theme.of(context).hintColor,

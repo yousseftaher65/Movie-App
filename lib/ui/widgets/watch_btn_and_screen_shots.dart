@@ -9,7 +9,8 @@ import 'package:movie_pojo/ui/widgets/screen_shot_widget.dart';
 class WatchBtnAndScreenShots extends StatelessWidget {
   final MovieDetailsResponse? data;
   final ScreenShotsResponse? images;
-  const WatchBtnAndScreenShots({super.key, this.data , this.images});
+  final Function onTap;
+  const WatchBtnAndScreenShots({super.key, this.data , this.images ,required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,9 @@ class WatchBtnAndScreenShots extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.symmetric(vertical: 16.h),
                     backgroundColor: Theme.of(context).focusColor),
-                onPressed: () {},
+                onPressed: () {
+                  onTap();
+                },
                 child: Text(
                   'watch'.tr(),
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
