@@ -66,15 +66,17 @@ class LoginCubit extends Cubit<LoginStates> {
       if (userCredential.user != null) {
         UserModel userModel = UserModel(
             email: userCredential.user!.email ?? "",
-            name:
-                (existUser.data() != null && existUser.data()!.name!.isNotEmpty)
+            name:(existUser.data() != null && existUser.data()!.name!.isNotEmpty)
                     ? existUser.data()?.name
                     : userCredential.user?.displayName ?? '',
             phoneNumber: userCredential.user!.phoneNumber ?? "",
-            imageIndex:
-                existUser.data() != null ? existUser.data()!.imageIndex : 0,
+            imageIndex:  existUser.data() != null ? existUser.data()!.imageIndex : 0,
             id: userCredential.user!.uid);
-        FireBaseManager.addUser(userModel);
+            if(existUser.data() == null){
+             FireBaseManager.addUser(userModel);
+            } else{
+              FireBaseManager.updateUserData(userModel, userModel.id);
+            }
       }
       emit(OnSuccessLoginState());
     } on FirebaseAuthException catch (e) {

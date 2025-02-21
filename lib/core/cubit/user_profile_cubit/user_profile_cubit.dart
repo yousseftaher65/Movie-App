@@ -34,10 +34,6 @@ class UserDataCubit extends Cubit<UserDataStates> {
     }
   }
 
-  /// Delete User
-  void deleteUser() async {
-    await FirebaseAuth.instance.currentUser?.delete();
-  }
 
   ///init User
   Future<void> initUser() async {
@@ -66,30 +62,6 @@ class UserDataCubit extends Cubit<UserDataStates> {
     if (userData != null) {
       return userData;
     }
-  }
-
-  ///Update UserData
-  updateUserData(UserModel model, String? userId) async {
-    try {
-      emit(UpdateDataUserLoadingState());
-      var updateUserData = FireBaseManager.getUserCollection();
-      updateUserData.doc(userId).update(
-        {
-          'name': model.name,
-          'image_index': model.imageIndex,
-        },
-      );
-      emit(UpdateDataUserSuccessState());
-    } catch (e) {
-      emit(UpdateDataUserErrorState("something_went_wrong".tr()));
-    }
-  }
-
-  /// Delete User Data
-
-  deleteUserData(String? userId) {
-    var deleteUser = FireBaseManager.getUserCollection();
-    return deleteUser.doc(userId).delete();
   }
 
   Future<void> loadHistoryMovies() async {
