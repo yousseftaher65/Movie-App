@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AvaterDialogWidget extends StatefulWidget {
   final Function(int) onAvatarSelected;
-
-  const AvaterDialogWidget({super.key, required this.onAvatarSelected});
+  final int? data;
+  const AvaterDialogWidget({super.key, this.data ,required this.onAvatarSelected});
 
   @override
   State<AvaterDialogWidget> createState() => _AvaterDialogWidgetState();
@@ -14,6 +14,11 @@ int currentIndex = 0;
 
 class _AvaterDialogWidgetState extends State<AvaterDialogWidget> {
 
+  @override
+  void initState() {
+    currentIndex = widget.data ?? 0;
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -30,7 +35,6 @@ class _AvaterDialogWidgetState extends State<AvaterDialogWidget> {
               borderRadius: BorderRadius.circular(24.r),
             ),
             child: GridView.builder(
-              physics: const NeverScrollableScrollPhysics(),
               padding: EdgeInsets.zero,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
@@ -48,7 +52,7 @@ class _AvaterDialogWidgetState extends State<AvaterDialogWidget> {
                   },
                   child: Container(
                     padding:
-                         EdgeInsets.symmetric(horizontal: 11.w, vertical: 9.h),
+                        EdgeInsets.symmetric(horizontal: 11.w, vertical: 9.h),
                     decoration: BoxDecoration(
                       color: currentIndex == index
                           ? Theme.of(context).cardColor.withOpacity(0.50)

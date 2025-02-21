@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_pojo/core/cubit/edit_profile_cubit/cubit.dart';
 import 'package:movie_pojo/core/cubit/movie_details_cubit/cubit.dart';
+import 'package:movie_pojo/core/models/user_model.dart';
 import 'package:movie_pojo/core/repository/get_movie_repo.dart';
 import 'package:movie_pojo/core/routes/page_route_name.dart';
 import 'package:movie_pojo/ui/layouts/Auth/forget_password.dart';
@@ -20,8 +22,8 @@ abstract class AppRoutes {
         return MaterialPageRoute(builder: (_) => const SplashScreen());
       case PageRouteName.onBoardingScreen:
         return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
-       case PageRouteName.onBoarding1:
-         return MaterialPageRoute(builder: (_) => const OnBoarding1());
+      case PageRouteName.onBoarding1:
+        return MaterialPageRoute(builder: (_) => const OnBoarding1());
       case PageRouteName.movieDetails:
         final data = settings.arguments as int;
         return MaterialPageRoute(
@@ -40,7 +42,13 @@ abstract class AppRoutes {
       case PageRouteName.home:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       case PageRouteName.editProfile:
-        return MaterialPageRoute(builder: (_) => const EditProfileScreen());
+        final data = settings.arguments as UserModel;
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => EditProfileCubit(data),
+            child: const EditProfileScreen(),
+          ),
+        );
       default:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
     }

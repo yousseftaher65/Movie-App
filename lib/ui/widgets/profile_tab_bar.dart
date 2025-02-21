@@ -30,7 +30,6 @@ class ProfileTabBar extends StatelessWidget {
                             'assets/images/avater_${(userBloc?.userModel?.imageIndex ?? 0) + 1}.png',
                             fit: BoxFit.cover,
                             height: 118.h,
-                            width: 118.h,
                           ),
                           SizedBox(
                             height: 15.h,
@@ -201,7 +200,7 @@ class ProfileTabBar extends StatelessWidget {
                     ),
                     Tab(
                       icon: ImageIcon(
-                        size: 39,
+                        size: 33,
                         color: Theme.of(context).cardColor,
                         const AssetImage('assets/icons/folder_icon.png'),
                       ),

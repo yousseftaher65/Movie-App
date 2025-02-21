@@ -39,13 +39,25 @@ class FireBaseManager {
 
   static Future<List<int?>> getUserHistory(String userId) async {
     var getUserData = getUserCollection();
-    DocumentSnapshot<UserModel> userResponse = await getUserData.doc(userId).get();
-    return userResponse.data()?.historyList??[];
+    DocumentSnapshot<UserModel> userResponse =
+        await getUserData.doc(userId).get();
+    return userResponse.data()?.historyList ?? [];
   }
 
   static Future<List<int?>> getUserFavorite(String userId) async {
     var getUserData = getUserCollection();
-    DocumentSnapshot<UserModel> userResponse = await getUserData.doc(userId).get();
-    return userResponse.data()?.favoriteList??[];
+    DocumentSnapshot<UserModel> userResponse =
+        await getUserData.doc(userId).get();
+    return userResponse.data()?.favoriteList ?? [];
+  }
+
+  static updateUserData(UserModel model, String? userId) async {
+    var updateUserData = getUserCollection();
+    updateUserData.doc(userId).update(
+      {
+        'name': model.name,
+        'image_index': model.imageIndex,
+      },
+    );
   }
 }
