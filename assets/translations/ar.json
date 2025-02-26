@@ -46,6 +46,7 @@
   "please_enter_valid_email": "يرجى إدخال عنوان بريد إلكتروني صالح.",
   "email_or_password_not_correct": "البريد الالكتروني او كامة المرورو غير صحيحه",
   "email_not_verified": "البريد الإلكتروني غير مُحقق",
+  "email_already_exist": "البريد الإلكتروني موجود بالفعل",
   "please_enter_password": "يرجى إدخال كلمة مرور.",
   "please_enter_name": "يرجى إدخال اسم.",
   "forgot_password": "هل نسيت كلمة المرور؟",
@@ -72,5 +73,8 @@
   "user": "مستخدم",
   "this_field_is_required": "هذه الخانة مطلوبة.",
   "phone_number":"رقم الهاتف",
-  "verify_email":"تأكيد الحساب"
+  "verify_email":"تأكيد الحساب",
+  "please_enter_a_valid_phone_number":"يرجى إدخال رقم هاتف صالح",
+  "ok":"حسنا",
+  "enter_phone_number":"ادخل رقم الهاتف"
 }

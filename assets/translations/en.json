@@ -48,6 +48,7 @@
   "please_enter_valid_email": "Please Enter a Valid Email Address.",
   "email_or_password_not_correct": "Email Or Password Is Not Correct",
   "email_not_verified": "Email Not Verified",
+  "email_already_exist": "Email Already Exists",
   "don't_have_account": "Don't Have Account ?",
   "please_enter_password": "Please Enter a Password.",
   "please_enter_name": "Please Enter a Name.",
@@ -73,5 +74,8 @@
   "user": "User",
   "this_field_is_required": "This field is required.",
   "phone_number":"Phone Number",
-  "verify_email":"Verify Email"
+  "verify_email":"Verify Email",
+  "please_enter_a_valid_phone_number":"Please Enter a Valid Phone Number",
+  "ok":"Ok",
+  "enter_phone_number":"Enter Phone Number"
 }
