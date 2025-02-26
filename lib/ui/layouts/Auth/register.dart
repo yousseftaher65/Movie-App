@@ -36,6 +36,16 @@ class _RegisterState extends State<Register> {
   final formKey = GlobalKey<FormState>();
 
   @override
+  void dispose() {
+    nameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    rePasswordController.dispose();
+    phoneNumberController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -63,6 +73,10 @@ class _RegisterState extends State<Register> {
                       },
                       child: Text(
                         "ok".tr(),
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyMedium
+                            ?.copyWith(color: AppColors.secondaryColor),
                       ),
                     ),
                   ],
@@ -256,11 +270,11 @@ class _RegisterState extends State<Register> {
                             if (value == null || value.isEmpty) {
                               return 'must_reenter_password'.tr();
                             }
-                            if (value.length < 8) {
-                              return 'password_must_be_8_characters'.tr();
-                            }
                             if (passwordController.text != value) {
                               return 'passwords_do_not_match'.tr();
+                            }
+                            if (value.length < 8) {
+                              return 'password_must_be_8_characters'.tr();
                             }
                             return null;
                           },

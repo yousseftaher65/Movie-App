@@ -20,81 +20,67 @@ class ProfileTab extends StatelessWidget {
         create: (context) =>
             UserDataCubit(getMovieInterface: GetMovieRepo())..initUser(),
         child: BlocConsumer<UserDataCubit, UserDataStates>(
-            listener: (context, state) => {
-                 /*  if (state is UserDataLoadingState)
-                    {
-                      print('*****************************************loading'),
-                      context.loaderOverlay.show(),
+            listener: (context, state) {
+          if (state is UserDataErrorState) {
+            context.loaderOverlay.hide();
+            showDialog(
+              context: context,
+              builder: (context) => AlertDialog(
+                title: Text(
+                  'something_went_wrong'.tr(),
+                ),
+                content: Text(
+                  state.message,
+                ),
+                actions: [
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
                     },
-                  if (state is UserDataSuccessState)
-                    {
-                      context.loaderOverlay.hide(),
-                    }, */
-                  if (state is UserDataErrorState)
-                    {
-                      context.loaderOverlay.hide(),
-                      showDialog(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                          title: Text(
-                            'something_went_wrong'.tr(),
-                          ),
-                          content: Text(
-                            state.message,
-                          ),
-                          actions: [
-                            ElevatedButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              child: Text(
-                                "ok".tr(),
-                              ),
-                            ),
-                          ],
-                        ),
-                      )
-                    },
-                },
-            builder: (context, state) {
-              var bloc = BlocProvider.of<UserDataCubit>(context);
-              if (state is UserDataLoadingState) {
-                context.loaderOverlay.show();
-              }
-              if (state is UserDataSuccessState) {
-                context.loaderOverlay.hide();
-                return Scaffold(
-                  body: NestedScrollView(
-                    headerSliverBuilder: (context, innerBoxIsScrolled) {
-                      return [
-                        SliverAppBar(
-                          expandedHeight: 389.h,
-                          collapsedHeight: 389.h,
-                          pinned: false,
-                          flexibleSpace: SafeArea(
-                            child: ProfileTabBar(
-                              userBloc: bloc,
-                            ),
-                          ),
-                        )
-                      ];
-                    },
-                    body: TabBarView(
-                      children: [
-                        BuildTab(
-                          data: bloc.favoriteResponse,
-                        ),
-                        BuildTab(
-                          data: bloc.historyResponse,
-                        ),
-                      ],
+                    child: Text(
+                      "ok".tr(),
                     ),
                   ),
-                );
-              } else {
-                return const SizedBox();
-              }
-            }),
+                ],
+              ),
+            );
+          }
+        }, builder: (context, state) {
+          var bloc = BlocProvider.of<UserDataCubit>(context);
+          if (state is UserDataLoadingState) {
+            context.loaderOverlay.show();
+          } else if (state is UserDataSuccessState) {
+            context.loaderOverlay.hide();
+          }
+          return Scaffold(
+            body: NestedScrollView(
+              headerSliverBuilder: (context, innerBoxIsScrolled) {
+                return [
+                  SliverAppBar(
+                    expandedHeight: 395.h,
+                    collapsedHeight: 395.h,
+                    pinned: false,
+                    flexibleSpace: SafeArea(
+                      child: ProfileTabBar(
+                        userBloc: bloc,
+                      ),
+                    ),
+                  )
+                ];
+              },
+              body: TabBarView(
+                children: [
+                  BuildTab(
+                    data: bloc.favoriteResponse,
+                  ),
+                  BuildTab(
+                    data: bloc.historyResponse,
+                  ),
+                ],
+              ),
+            ),
+          );
+        }),
       ),
     );
   }

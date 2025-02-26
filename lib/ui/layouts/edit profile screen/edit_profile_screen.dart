@@ -37,6 +37,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   }
 
   @override
+  void dispose() {
+    nameController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocConsumer<EditProfileCubit, EditProfileState>(
       listener: (context, state) {
@@ -65,8 +71,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             ),
           );
         }  if (state is EditProfileSuccessState) {
-          Navigator.pushNamedAndRemoveUntil(
-              context, PageRouteName.home, (_) => false);
+          Navigator.pop(context);
+          context.loaderOverlay.hide();
           Fluttertoast.showToast(
             msg: "profile_updated_successfully".tr(),
             toastLength: Toast.LENGTH_SHORT,

@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_pojo/core/cubit/movie_details_cubit/states.dart';
 import 'package:movie_pojo/core/firebase/firebase_manegers.dart';
+import 'package:movie_pojo/core/models/user_model.dart';
 import 'package:movie_pojo/core/repository/get_movie_interface.dart';
 import 'package:movie_pojo/models/cast_response.dart';
 import 'package:movie_pojo/models/movie_details_response.dart';
@@ -10,6 +12,7 @@ import 'package:movie_pojo/models/screen_shots_response.dart';
 
 class MovieDetailsCubit extends Cubit<MovieDetailsStates> {
   int movieId;
+  UserModel? userData;
   MovieDetailsResponse? movieDetailsResponse;
   ScreenShotsResponse? screenShotsResponse;
   PageResponse? pageResponse;
@@ -26,6 +29,7 @@ class MovieDetailsCubit extends Cubit<MovieDetailsStates> {
       await getImages();
       await getSimilar();
       await getCredits();
+      await getUser(FirebaseAuth.instance.currentUser!.uid);
       if (movieDetailsResponse?.statusMessage == null &&
           pageResponse?.statusMessage == null &&
           screenShotsResponse?.statusMessage == null &&
@@ -63,8 +67,31 @@ class MovieDetailsCubit extends Cubit<MovieDetailsStates> {
     await FireBaseManager.updateUserFavorite(userId, movieId);
   }
 
+  void removeFavorite() async {
+    final userId = FirebaseAuth.instance.currentUser!.uid;
+    await FireBaseManager.removeUserFavorite(userId, movieId);
+  }
+
   void addHistory() async {
     final userId = FirebaseAuth.instance.currentUser!.uid;
-     await FireBaseManager.updateUserHistory(userId, movieId);
+    await FireBaseManager.updateUserHistory(userId, movieId);
+  }
+
+  /// get User Data
+ Future getUser(String userId) async {
+    var getUserData = FireBaseManager.getUserCollection();
+    DocumentSnapshot<UserModel> userResponse =
+        await getUserData.doc(userId).get();
+    userData = userResponse.data();
+    if (userData != null) {
+      return userData;
+    }
+  }
+
+  bool isfav() {
+    if (userData != null && userData?.favoriteList != null) {
+      return userData!.favoriteList!.contains(movieId);
+    }
+    return false;
   }
 }

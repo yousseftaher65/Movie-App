@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api, file_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_pojo/core/routes/page_route_name.dart';
@@ -48,8 +50,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           context, PageRouteName.logIn, (route) => false);
     } else {
       _controller.nextPage(
-        duration: const Duration(milliseconds: 800),
-        curve: Curves.easeIn,
+        duration: const Duration(milliseconds: 1),
+        curve: Curves.ease,
       );
     }
   }
@@ -57,8 +59,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   void previousPage() {
     if (_controller.page?.toInt() != 0) {
       _controller.previousPage(
-        duration: const Duration(milliseconds: 800),
-        curve: Curves.easeIn,
+        duration: const Duration(milliseconds: 1),
+        curve: Curves.ease,
       );
     }
   }

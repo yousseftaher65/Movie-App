@@ -47,15 +47,19 @@ class MovieDetailsScreen extends StatelessWidget {
                 SliverToBoxAdapter(
                   child: PlayMovieWidget(
                     onTap: () {
-                      data.addFavorite();
+                      if (data.isfav()) {
+                        data.removeFavorite();
+                      } else {
+                        data.addFavorite();
+                      }
                     },
+                    isfav: data.isfav(),
                     data: data.movieDetailsResponse,
                   ),
                 ),
                 SliverToBoxAdapter(
                   child: WatchBtnAndScreenShots(
                     onTap: () {
-                      print('-----------------------------watch');
                       data.addHistory();
                     },
                     images: data.screenShotsResponse,

@@ -25,7 +25,9 @@ class CastContainer extends StatelessWidget {
               height: 70.h,
               width: 70.w,
               fit: BoxFit.cover,
-              placeholder: (context, url) => const Center(child: CircularProgressIndicator(),),
+              placeholder: (context, url) =>  Center(child: CircularProgressIndicator(
+                color: Theme.of(context).cardColor,
+              ),),
               errorWidget: (context, url, error) => const Center(child: Icon(Icons.error),),
             ),
           ),

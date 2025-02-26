@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:movie_pojo/core/routes/app_routes.dart';
+import 'package:movie_pojo/core/theme/app_colors.dart';
 import 'package:movie_pojo/core/theme/base_theme.dart';
 import 'package:movie_pojo/firebase_options.dart';
 
@@ -39,6 +40,14 @@ class MainApp extends StatelessWidget {
       builder: (context, child) {
         BaseTheme theme = BaseTheme();
         return GlobalLoaderOverlay(
+          overlayWidgetBuilder: (progress) {
+            return Center(
+              child: CircularProgressIndicator(
+                color: AppColors.accentColor,
+                value: progress,
+              ),
+            );
+          },
           overlayColor: Colors.transparent.withOpacity(.7),
           child: MaterialApp(
             localizationsDelegates: context.localizationDelegates,
