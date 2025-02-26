@@ -1,7 +1,7 @@
-import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:movie_pojo/core/cubit/user_profile_cubit/user_profile_states.dart';
 import 'package:movie_pojo/core/repository/get_movie_interface.dart';
@@ -17,6 +17,8 @@ class UserDataCubit extends Cubit<UserDataStates> {
   GetMovieInterface? getMovieInterface;
   List<MovieDetailsResponse>? historyResponse;
   List<MovieDetailsResponse>? favoriteResponse;
+
+  static UserDataCubit get(context) => BlocProvider.of(context);
 
   ///Logout
   void logOut() async {

@@ -116,7 +116,9 @@ class ProfileTabBar extends StatelessWidget {
                                 context,
                                 PageRouteName.editProfile,
                                 arguments: userBloc?.userData,
-                              );
+                              ).then((_){
+                                userBloc?.initUser();
+                              });
                             },
                             child: Text(
                               'edit_profile'.tr(),
