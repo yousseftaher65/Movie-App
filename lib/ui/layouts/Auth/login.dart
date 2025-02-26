@@ -34,6 +34,8 @@ class _LoginState extends State<Login> {
   void dispose() {
     emailController.clear();
     passwordController.clear();
+    emailController.dispose();
+    passwordController.dispose();
     super.dispose();
   }
 
@@ -74,6 +76,7 @@ class _LoginState extends State<Login> {
                       },
                       child: Text(
                         "ok".tr(),
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.secondaryColor),
                       ),
                     ),
                   ],
@@ -136,7 +139,7 @@ class _LoginState extends State<Login> {
                           textEditingController: emailController,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'please_enter_your_email'.tr();
+                              return 'please_enter_email'.tr();
                             }
                             final emailRegex = RegExp(
                                 r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
@@ -295,7 +298,7 @@ class _LoginState extends State<Login> {
                           child: ElevatedButton(
                             onPressed: () {
                               bloc.signInWithGoogle();
-                                if (state is OnSuccessLoginState){
+                              if (state is OnSuccessLoginState) {
                                 Navigator.pushNamedAndRemoveUntil(
                                   context,
                                   PageRouteName.home,

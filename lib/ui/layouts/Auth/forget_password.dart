@@ -12,11 +12,24 @@ import 'package:movie_pojo/ui/widgets/elevated_btn.dart';
 import '../../../core/theme/base_theme.dart';
 import '../../widgets/auth.btn.dart';
 
-class ForgetPassword extends StatelessWidget {
+class ForgetPassword extends StatefulWidget {
+
+  const ForgetPassword({super.key});
+
+  @override
+  State<ForgetPassword> createState() => _ForgetPasswordState();
+}
+
+class _ForgetPasswordState extends State<ForgetPassword> {
   final TextEditingController emailController = TextEditingController();
+
   final formKey = GlobalKey<FormState>();
 
-  ForgetPassword({super.key});
+  @override
+  void dispose() {
+    emailController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

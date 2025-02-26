@@ -38,7 +38,7 @@ abstract class AppRoutes {
       case PageRouteName.register:
         return MaterialPageRoute(builder: (_) => const Register());
       case PageRouteName.forgetPassword:
-        return MaterialPageRoute(builder: (_) => ForgetPassword());
+        return MaterialPageRoute(builder: (_) => const ForgetPassword());
       case PageRouteName.home:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       case PageRouteName.editProfile:
