@@ -29,8 +29,10 @@ class _AvailableNowWidgetState extends State<AvailableNowWidget> {
                 fit: BoxFit.cover,
                 height: 621.h,
                 width: double.infinity,
-                placeholder: (context, url) => const Center(
-                  child: CircularProgressIndicator(),
+                placeholder: (context, url) => Center(
+                  child: CircularProgressIndicator(
+                    color: Theme.of(context).cardColor,
+                  ),
                 ),
                 errorWidget: (context, url, error) => const Center(
                   child: Icon(Icons.error),
