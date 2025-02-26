@@ -60,4 +60,10 @@ class FireBaseManager {
       },
     );
   }
+  static Future<void> removeUserFavorite(String userId, int movieId) {
+    var updateUserData = getUserCollection();
+    return updateUserData.doc(userId).update({
+      'favorite_list': FieldValue.arrayRemove([movieId])
+    });
+  }
 }

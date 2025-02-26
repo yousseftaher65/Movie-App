@@ -1,24 +1,37 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_pojo/models/movie_details_response.dart';
 
-class PlayMovieWidget extends StatelessWidget {
+class PlayMovieWidget extends StatefulWidget {
   final MovieDetailsResponse? data;
   final Function onTap;
-  const PlayMovieWidget({super.key ,required this.onTap, this.data});
+ bool isfav;
+   PlayMovieWidget(
+      {super.key, required this.onTap, this.data, this.isfav = false});
 
+  @override
+  State<PlayMovieWidget> createState() => _PlayMovieWidgetState();
+}
+
+
+class _PlayMovieWidgetState extends State<PlayMovieWidget> {
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         CachedNetworkImage(
-          imageUrl: "https://image.tmdb.org/t/p/original/${data?.backdropPath}",
+          imageUrl:
+              "https://image.tmdb.org/t/p/original/${widget.data?.backdropPath}",
           height: 645.h,
           width: double.infinity.w,
           fit: BoxFit.cover,
-          placeholder: (context, url) => const Center(
-            child: CircularProgressIndicator(),
+          placeholder: (context, url) => Center(
+            child: CircularProgressIndicator(
+              color: Theme.of(context).cardColor,
+            ),
           ),
           errorWidget: (context, url, error) => const Center(
             child: Icon(Icons.error),
@@ -56,12 +69,18 @@ class PlayMovieWidget extends StatelessWidget {
                   ),
                   IconButton(
                     onPressed: () {
-                      onTap();
+                      widget.onTap();
+                      setState(() {
+                        widget.isfav = !widget.isfav;
+                      });
                     },
                     icon: ImageIcon(
                       size: 29,
                       color: Theme.of(context).hintColor,
-                      const AssetImage('assets/icons/save_icon.png'),
+                      AssetImage(
+                        widget.isfav 
+                          ? 'assets/icons/save_icon.png'
+                          : 'assets/icons/un_saved_icon.png'),
                     ),
                   ),
                 ],
@@ -77,7 +96,7 @@ class PlayMovieWidget extends StatelessWidget {
               ),
               const Spacer(),
               Text(
-                data?.title ?? '',
+                widget.data?.title ?? '',
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       color: Theme.of(context).hintColor,
@@ -87,7 +106,9 @@ class PlayMovieWidget extends StatelessWidget {
                 height: 16.h,
               ),
               Text(
-                  (data?.releaseDate?.isNotEmpty ?? false) ? data?.releaseDate?.substring(0,4) ?? '' : '',
+                (widget.data?.releaseDate?.isNotEmpty ?? false)
+                    ? widget.data?.releaseDate?.substring(0, 4) ?? ''
+                    : '',
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
                       color: const Color(0xffADADAD),
