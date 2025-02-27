@@ -28,8 +28,6 @@ Watch the demo video below to see the app in action:
   - Save favorite movies (persisted with Firestore)
 - **Localization** 🌍
   - Multi-language support (English, Arabic)
-- **Dark Mode** 🌗
-  - Beautiful dark and light themes
 - **Responsive UI** 📱
   - Clean and intuitive design suitable for different device sizes
 
