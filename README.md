@@ -7,6 +7,12 @@
 
 A feature-rich movie discovery application built with Flutter. Browse trending movies, search films, save favorites, and get personalized recommendations.
 
+## Demo Video 🎥
+
+Watch the demo video below to see the app in action:
+
+[![Watch the video](https://img.youtube.com/vi/OYZY_IlonGI/maxresdefault.jpg)](https://youtube.com/shorts/OYZY_IlonGI)
+
 ## Features ✨
 
 - **Authentication** 🔒
@@ -46,3 +52,4 @@ A feature-rich movie discovery application built with Flutter. Browse trending m
   - loader_overlay
   - google_fonts
   - http
+  - flutter_screenutil
