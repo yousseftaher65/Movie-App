@@ -1,4 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cached_network_image_ce/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -34,7 +34,7 @@ class _AvailableNowWidgetState extends State<AvailableNowWidget> {
                     color: Theme.of(context).cardColor,
                   ),
                 ),
-                errorWidget: (context, url, error) => const Center(
+                errorBuilder: (context, url, error) => const Center(
                   child: Icon(Icons.error),
                 ),
               ),
@@ -45,8 +45,8 @@ class _AvailableNowWidgetState extends State<AvailableNowWidget> {
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: [
-                        Theme.of(context).primaryColor.withOpacity(0.8),
-                        Theme.of(context).primaryColor.withOpacity(0.6),
+                        Theme.of(context).primaryColor.withAlpha((255 * 0.8).toInt()),
+                        Theme.of(context).primaryColor.withAlpha((255 * 0.6).toInt()),
                         Theme.of(context).primaryColor,
                       ]),
                 ),
@@ -54,11 +54,12 @@ class _AvailableNowWidgetState extends State<AvailableNowWidget> {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+                    SizedBox(height: 30.h),
                     Image.asset(
                       'assets/images/available_now.png',
                       fit: BoxFit.cover,
                     ),
-                    SizedBox(height: 21.h),
+                    SizedBox(height: 30.h),
                     CarouselSlider.builder(
                       options: CarouselOptions(
                           onPageChanged: (index, reason) {
@@ -89,7 +90,7 @@ class _AvailableNowWidgetState extends State<AvailableNowWidget> {
                         );
                       },
                     ),
-                    SizedBox(height: 21.h),
+                    SizedBox(height: 30.h),
                     Image.asset(
                       'assets/images/watch_now.png',
                       fit: BoxFit.cover,

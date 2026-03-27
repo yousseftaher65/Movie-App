@@ -36,7 +36,7 @@ class OnBoarding1 extends StatelessWidget {
                     ),
                     Text("onboarding_one_content".tr(),
                         style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                          color: Theme.of(context).hintColor.withOpacity(0.7)
+                          color: Theme.of(context).hintColor.withAlpha((255 * 0.7).toInt())
                         )),
                   ],
                 ),

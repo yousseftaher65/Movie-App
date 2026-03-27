@@ -55,7 +55,7 @@ class _AvaterDialogWidgetState extends State<AvaterDialogWidget> {
                         EdgeInsets.symmetric(horizontal: 11.w, vertical: 9.h),
                     decoration: BoxDecoration(
                       color: currentIndex == index
-                          ? Theme.of(context).cardColor.withOpacity(0.50)
+                          ? Theme.of(context).cardColor.withAlpha((255 * 0.5).toInt())
                           : Colors.transparent,
                       border: Border.all(color: Theme.of(context).cardColor),
                       borderRadius: BorderRadius.circular(20.r),

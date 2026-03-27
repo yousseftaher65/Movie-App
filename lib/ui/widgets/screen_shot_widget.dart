@@ -1,4 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cached_network_image_ce/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_pojo/models/screen_shots_response.dart';
@@ -21,7 +21,7 @@ class ScreenShotWidget extends StatelessWidget {
             color: Theme.of(context).cardColor,
           ),
         ),
-        errorWidget: (context, url, error) =>
+        errorBuilder: (context, url, error) =>
             const Center(child: Icon(Icons.error)),
       ),
     );

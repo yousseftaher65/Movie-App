@@ -1,6 +1,6 @@
 // ignore_for_file: must_be_immutable
 
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cached_network_image_ce/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_pojo/models/movie_details_response.dart';
@@ -33,7 +33,7 @@ class _PlayMovieWidgetState extends State<PlayMovieWidget> {
               color: Theme.of(context).cardColor,
             ),
           ),
-          errorWidget: (context, url, error) => const Center(
+          errorBuilder: (context, url, error) => const Center(
             child: Icon(Icons.error),
           ),
         ),
@@ -46,8 +46,8 @@ class _PlayMovieWidgetState extends State<PlayMovieWidget> {
               begin: Alignment.center,
               end: Alignment.bottomCenter,
               colors: [
-                Theme.of(context).primaryColor.withOpacity(0.2),
-                Theme.of(context).primaryColor.withOpacity(0.8),
+                Theme.of(context).primaryColor.withAlpha((255 * 0.2).toInt()),
+                Theme.of(context).primaryColor.withAlpha((255 * 0.8).toInt()),
                 Theme.of(context).primaryColor,
               ],
             ),
