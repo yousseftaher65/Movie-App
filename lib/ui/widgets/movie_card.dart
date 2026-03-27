@@ -1,6 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cached_network_image_ce/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_pojo/core/cubit/user_profile_cubit/user_profile_cubit.dart';
@@ -56,7 +56,7 @@ class MovieCard extends StatelessWidget {
                     color: Theme.of(context).cardColor,
                   ),
                 ),
-                errorWidget: (context, url, error) =>
+                errorBuilder: (context, url, error) =>
                     const Center(child: Icon(Icons.error)),
               ),
             ),
@@ -66,7 +66,7 @@ class MovieCard extends StatelessWidget {
               height: 28.h,
               width: 58.w,
               decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor.withOpacity(0.7),
+                color: Theme.of(context).primaryColor.withAlpha((255 * 0.7).toInt()),
                 borderRadius: BorderRadius.circular(16.r),
               ),
               child: Row(

@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:movie_pojo/core/constants/app_logger.dart';
 import 'package:movie_pojo/core/cubit/login_maneger/login_states.dart';
 import 'package:movie_pojo/core/firebase/firebase_manegers.dart';
 import 'package:movie_pojo/core/models/user_model.dart';
@@ -16,13 +17,13 @@ class LoginCubit extends Cubit<LoginStates> {
   ) async {
     try {
       emit(OnLoadingLoginState());
-      final credentials = await FirebaseAuth.instance
+      /* final credentials = */ await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: emailAddress, password: password);
-      if (credentials.user!.emailVerified) {
-        emit(OnSuccessLoginState());
+      emit(OnSuccessLoginState());
+      /* if (credentials.user!.emailVerified) {
       } else {
         emit(OnErrorLoginState("email_not_verified".tr()));
-      }
+      } */
     } on FirebaseAuthException catch (e) {
       if (e.code == "wrong-password") {
         emit(OnErrorLoginState("wrong_password".tr()));
@@ -40,19 +41,23 @@ class LoginCubit extends Cubit<LoginStates> {
   void signInWithGoogle() async {
     try {
       emit(OnLoadingLoginState());
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      final googleSignInInstance = GoogleSignIn.instance;
+      await googleSignInInstance.initialize(
+          serverClientId:
+              "606354289039-dgvhg7o172916sodq1g62l8gvg9si2a8.apps.googleusercontent.com");
 
-      if (googleUser == null) {
-        emit(OnErrorLoginState(''));
+      final GoogleSignInAccount googleUser =
+          await googleSignInInstance.authenticate();
+
+      if (googleUser.email.isEmpty) {
+        emit(OnErrorLoginState('login_canceled'.tr()));
         return; // The user canceled the sign-in
       }
       // Obtain the auth details from the request
-      final GoogleSignInAuthentication googleAuth =
-          await googleUser.authentication;
+      final GoogleSignInAuthentication googleAuth = googleUser.authentication;
 
       // Create a new credential
       final AuthCredential credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
       );
 
@@ -66,22 +71,26 @@ class LoginCubit extends Cubit<LoginStates> {
       if (userCredential.user != null) {
         UserModel userModel = UserModel(
             email: userCredential.user!.email ?? "",
-            name:(existUser.data() != null && existUser.data()!.name!.isNotEmpty)
+            name:
+                (existUser.data() != null && existUser.data()!.name!.isNotEmpty)
                     ? existUser.data()?.name
                     : userCredential.user?.displayName ?? '',
             phoneNumber: userCredential.user!.phoneNumber ?? "",
-            imageIndex:  existUser.data() != null ? existUser.data()!.imageIndex : 0,
+            imageIndex:
+                existUser.data() != null ? existUser.data()!.imageIndex : 0,
             id: userCredential.user!.uid);
-            if(existUser.data() == null){
-             FireBaseManager.addUser(userModel);
-            } else{
-              FireBaseManager.updateUserData(userModel, userModel.id);
-            }
+        if (existUser.data() == null) {
+          FireBaseManager.addUser(userModel);
+        } else {
+          FireBaseManager.updateUserData(userModel, userModel.id);
+        }
       }
       emit(OnSuccessLoginState());
     } on FirebaseAuthException catch (e) {
+      AppLogger(e.toString());
       emit(OnErrorLoginState(e.toString()));
     } catch (e) {
+      AppLogger(e.toString());
       emit(OnErrorLoginState(e.toString()));
     }
   }

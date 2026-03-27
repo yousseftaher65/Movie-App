@@ -28,8 +28,9 @@ class UserDataCubit extends Cubit<UserDataStates> {
       for (var provider in user.providerData) {
         if (provider.providerId == 'google.com') {
           // Google sign-out
-          GoogleSignIn googleSignOut = GoogleSignIn();
-          await googleSignOut.disconnect();
+          GoogleSignIn googleSignOut = GoogleSignIn.instance;
+          await googleSignOut.initialize();
+          await googleSignOut.signOut();
         }
       }
       await FirebaseAuth.instance.signOut();

@@ -1,4 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cached_network_image_ce/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_pojo/models/cast_response.dart';
@@ -28,7 +28,7 @@ class CastContainer extends StatelessWidget {
               placeholder: (context, url) =>  Center(child: CircularProgressIndicator(
                 color: Theme.of(context).cardColor,
               ),),
-              errorWidget: (context, url, error) => const Center(child: Icon(Icons.error),),
+              errorBuilder: (context, url, error) => const Center(child: Icon(Icons.error),),
             ),
           ),
           SizedBox(

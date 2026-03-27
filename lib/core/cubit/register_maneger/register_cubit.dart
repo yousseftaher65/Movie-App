@@ -31,7 +31,7 @@ class RegisterCubit extends Cubit<RegisterStates> {
         imageIndex: imageIndex,
       );
       await FireBaseManager.addUser(model);
-      credential.user!.sendEmailVerification();
+      //credential.user!.sendEmailVerification();
       emit(OnSuccessRegisterState());
     } on FirebaseAuthException catch (e) {
       String error = "" ;
